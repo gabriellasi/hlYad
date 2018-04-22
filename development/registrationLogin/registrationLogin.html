@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+      <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
+      <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
+      <title>הושט לי יד</title>
+      <meta charset="utf-8">
+      <link rel="icon" href="treeLogo.png">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="stylesheet" href="registrationLogin.css">
+      <link rel="stylesheet" type="text/css" href="styleHomePageYouth.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="assets/css/Footer-with-logo.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+      <meta name="google-signin-scope" content="profile email">
+      <meta name="google-signin-client_id" content="357853947124-4n5dpg4qqnukh7oemaql77ru6f8ch37k.apps.googleusercontent.com">
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
+     
+  </head>
+    
+    <body>
+        <header>
+            <div class="pointer">
+                <i id="logIn" style="font-size:24px" class="fa" title="התחבר">&#xf007;</i>
+                <div id="search5back">
+                    <img id="logo" src="treeLogo.png">
+                </div>
+            </div>
+        </header>
+        
+        <nav>
+            <ul class="nav nav-tabs">
+                <li title="not supported"><a href="#">דף הבית</a>
+                </li>
+                <li role="presentation"><a href="#">אודות</a></li>
+                <li title="not supported" role="presentation"><a href="#">יוצאים בשאלה</a></li>
+                <li title="not supported" role="presentation"><a href="#">יוצאים מהארון</a></li>
+                <li title="not supported" role="presentation"><a href="#">פגיעה מינית</a></li>
+                <li title="not supported" role="presentation"><a href="#">נוער בסיכון</a></li>
+                <li title="not supported" role="presentation"  class="active"><a href="#">רישום לאתר</a></li>
+            </ul>
+        </nav>
+        
+        <p id="massage1"><a id="barContact" title="not supported" href="#"><b>לחץ כאן ומלא את פרטיך, ונציג מטעמינו יחזור אליך במהרה</b></a><p/>
+        
+        
+        
+<a href="#" onclick="signOut();">התנתק</a>
+<script>
+  function signOut() {
+    var auth2 = gapi.auth2.getAuthInstance();
+    auth2.signOut().then(function () {
+      console.log('User signed out.');
+    });
+  }
+</script>
+        <main>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-4 login">
+                        <h4>האם אתה כבר רשום?</h4>
+                        <form>
+                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                            <script>
+                              function onSignIn(googleUser) {
+                                // Useful data for your client-side scripts:
+                                var profile = googleUser.getBasicProfile();
+                                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                                console.log('Full Name: ' + profile.getName());
+                                console.log('Given Name: ' + profile.getGivenName());
+                                console.log('Family Name: ' + profile.getFamilyName());
+                                console.log("Image URL: " + profile.getImageUrl());
+                                console.log("Email: " + profile.getEmail());
+
+                                // The ID token you need to pass to your backend:
+                                var id_token = googleUser.getAuthResponse().id_token;
+                                console.log("ID Token: " + id_token);
+                              };
+                            </script>
+                        </form>
+                    </div>
+                    
+                    <div class="col-sm-7 registration">
+                        <h4>הירשם למערכת "הושט לי יד"</h4>
+                        <form class="form-row">
+                            <div class="col">
+                                <label for="inputEmail4">Email</label>
+                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+                            </div>
+                            <div class="col">
+                                <label for="inputPassword4">Password</label>
+                                 <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+        
+        <img id="acessability" src="accessbility.png" title="acessability-not supported" />
+        
+          <footer dir="rtl">
+            <div class="foo">
+                <div id="in_foo">
+                    <div id="face_gma">
+                    <p> בקרו אותנו</p>
+                    <a href="#" class="fa fa-facebook"></a>
+                    <a href="#" class="fa fa-google"></a>
+                    </div>
+
+                    <p><b>הושט לי יד - עמותה לנוער במצבי סיכון</b> 
+                    <br><br>אבן גבירול 26, רמת גן, ת.ד 52217
+                    <br><br>טל. 03-3657777 פקס. 03-2550319
+                    <br><br><b>hoshetLiYad@gmail.com</b></p>
+                </div>
+                
+            </div>
+        </footer>
+        
+    </body>
+</html>
