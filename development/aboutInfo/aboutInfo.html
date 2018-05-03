@@ -1,68 +1,95 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
     <head>
-    	<link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
         <title>הושט לי יד</title>
         <meta charset="utf-8">
-        <link rel="icon" href="treeLogo.png">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="icon" href="logo_icon.png">
+        <link rel="stylesheet" type="text/css" href="joinus.css">
         <link rel="stylesheet" href="aboutInfo.css">
-        <link rel="stylesheet" type="text/css" href="styleHomePageYouth.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-        <link rel="stylesheet" href="assets/css/Footer-with-logo.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
     </head>
     
     <body>
-        <header>
+        <div class="header">
+            <div id="log">        
+            <i id="logIn"  class="fa" title="התחבר" >&#xf007;</i>
+            </div>
+            
+            <div class="text-center"> 
+                <a href="#"><img id="logo" src="logo.png"></a>
+            </div>
+            
             <div class="pointer">
-                <i id="logIn" style="font-size:24px" class="fa" title="התחבר">&#xf007;</i>
-                <div id="search5back">
-                    <img id="logo" src="treeLogo.png">
+                <div calss="navbar">
+                    <nav class="stroke">
+                        <ul>
+                          <li><a href="#">דף הבית</a></li>
+                          <li><a href="#">אודות</a></li>
+                          <li><a href="#">תחומי פעילות</a></li>
+                          <li><a href="#">התנדבות</a></li>
+                          <li><a href="#">צור קשר</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-        </header>
+
+        </div>
         
-        <nav>
-            <ul class="nav nav-tabs">
-                <li title="not supported"><a href="#">דף הבית</a>
-                </li>
-                <li role="presentation" class="active"><a href="#" class="active">אודות</a></li>
-                <li title="not supported" role="presentation"><a href="#">יוצאים בשאלה</a></li>
-                <li title="not supported" role="presentation"><a href="#">יוצאים מהארון</a></li>
-                <li title="not supported" role="presentation"><a href="#">פגיעה מינית</a></li>
-                <li title="not supported" role="presentation"><a href="#">נוער בסיכון</a></li>
-                <li title="not supported" role="presentation"><a href="#">רישום לאתר</a></li>
-            </ul>
-        </nav>
-        
-        <p id="massage1"><a id="barContact" title="not supported" href="#"><b>לחץ כאן ומלא את פרטיך, ונציג מטעמינו יחזור אליך במהרה</b></a><p/>
-        
+
         <main>
+            <div class="page-header" style="border-bottom: 1px solid #E8AFBF;">
+                <h3 id="title" style="font-family: 'Amatic SC'; font-size: 50px; color:  #822040;">הושט לי יד - מי אנחנו? </h3>
+            </div>
+
+            <br>
             <div id="aboutInfo" class="container">
-                <h1 class="text-center"><b>"הושט לי יד" – מי אנחנו? </b></h1>
-                <br>
                 <div class="row">
                     <div class="col-md-4"> 
-                       <blockquote class="blockquote-reverse">
-                           <img src="treeLogo.png" style="float: left;width:180px;margin-left: -150px;">
-                        <p id="poem" class="text-center">אִם תִּפְגֹּשׁ אָדָם שָׁבוּר<br>שֵׁב אִתּוֹ<br>עַל סַף הַשֶּׁבֶר הָאָרוּר<br>אַל תְּנַסֶּה לְתַקֵּן<br>אַל תִּרְצֶה שׁוּם דָּבָר<br>בְּיִרְאָה וּבְאַהֲבַת הַזּוּלָת<br>שֵׁב אִתּוֹ<br>שֶׁלֹּא יִהְיֶה שָׁם לְבַד.<br>[צל עריות / ווינשטוק סמדר]</p></blockquote>
+                
+                           <img id="sideLogo" src="logo.png" style="float:left;margin-left: -50px;width:auto;height: auto;">
+                           <p id="poem" class="text-center">אִם תִּפְגֹּשׁ אָדָם שָׁבוּר<br>שֵׁב אִתּוֹ<br>עַל סַף הַשֶּׁבֶר הָאָרוּר<br>אַל תְּנַסֶּה לְתַקֵּן<br>אַל תִּרְצֶה שׁוּם דָּבָר<br>בְּיִרְאָה וּבְאַהֲבַת הַזּוּלָת<br>שֵׁב אִתּוֹ<br>שֶׁלֹּא יִהְיֶה שָׁם לְבַד.<br>[צל עריות / ווינשטוק סמדר]</p>
+                        
                         
                     </div>
                     <div class="col-md-8">
-                        <p class="text-right">במדינת ישראל מתגוררים להט"בים, יוצאים בשאלה (דתיים לשעבר), נוער בסיכון, נפגעי מינית ועוד.<br>
-                        <b>"הושט לי יד"</b> הינה מערכת אשר מסייעת לצעירים מקבוצות אלו במציאת פיתרון מותאם אישית לצרכיהם. <br>
-                        על ידי הזנת מספר מאפיינים והעדפות אישיות, אנו נוכל להתאים את המקום או המסגרת ההולמת ביותר <b>בשבילך</b>.<br>
-                            <u><br>אז איך זה עובד?</u><br>
-                            יצרנו קשר עם בתי מחסה, קבוצות תמיכה, טיפול ומתנדבים שונים – ואחסנו אצלנו את כל המידע אודותיהם.<br>
-                            לאחר שהכנסת את הנתונים שלך למערכת, <b>"הושט לי יד" </b>תציג בפניך את כל המסגרות עם <b>אחוז ההתאמה עבורך.</b><br>
-                            את כל זה, נעשה באופן <b>פרטי וללא מחויבות להירשם לאתר</b>.<br>
-                            <u><br>מה נותן לי הרישום?</u><br>
-                            במידה ותבחר לבצע רישום לאתר באמצעות <b>חשבון GMAIL פרטי</b>,<br>
-                            <b>"הושט לי יד" </b> תדע לשמור על נתוניך בכל פעם שתבצע שימוש במערכת.<br>
-                            <u><br>מה נשאר לי לעשות?</u><br>
-                            <a id="systemLink" href="#"><b>ללחוץ פה</b></a> ולמצוא את הפיתרון המתאים ביותר <b>בשבילך</b>.
+                        <p class="text-right">
+                            במדינת ישראל מתגוררים להט"בים, יוצאים בשאלה (דתיים לשעבר), נוער בסיכון, נפגעי מינית ועוד.
+                            <br>
+                            <b>"הושט לי יד"</b> הינה מערכת אשר מסייעת לצעירים מקבוצות אלו במציאת פיתרון מותאם אישית לצרכיהם. 
+                            <br>
+                            על ידי הזנת מספר מאפיינים והעדפות אישיות, אנו נוכל להתאים את המקום או המסגרת ההולמת ביותר
+                            <b>בשבילך</b>.
+                            <br>
+                        </p>
+                        <h2>אז איך זה עובד?</h2>
+                        <br>
+                        יצרנו קשר עם בתי מחסה, קבוצות תמיכה, טיפול ומתנדבים שונים – ואחסנו אצלנו את כל המידע אודותיהם.<br>
+                        לאחר שהכנסת את הנתונים שלך למערכת, 
+                        <b>"הושט לי יד" </b>
+                        תציג בפניך את כל המסגרות עם 
+                        <b>אחוז ההתאמה עבורך.</b>
+                        <br>את כל זה, נעשה באופן 
+                        <b>פרטי וללא מחויבות להירשם לאתר</b>.
+                        <br>
+                        <h2>מה נותן לי הרישום?</h2>
+                        <br>
+                        <p class="text-right">
+                        במידה ותבחר לבצע רישום לאתר באמצעות 
+                        <b>חשבון GMAIL פרטי</b>,
+                        <br>
+                        <b>"הושט לי יד" </b> תדע לשמור על נתוניך בכל פעם שתבצע שימוש במערכת.<br></p>
+                        <h2>מה נשאר לי לעשות?</h2>
+                        <br>
+                        <p class="text-right"><a id="systemLink" href="#">
+                            <b>ללחוץ פה</b>
+                        </a> ולמצוא את הפיתרון המתאים ביותר <b>בשבילך</b>.
                         </p>   
                     </div>
                 </div>
@@ -70,26 +97,50 @@
         </main>
         
         
-          <footer dir="rtl">
-            <div class="foo">
-                <div id="in_foo">
-                    <div id="face_gma">
-                    <p> בקרו אותנו</p>
-                    <a href="#" class="fa fa-facebook"></a>
-                    <a href="#" class="fa fa-google"></a>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="#"><img src="logo_icon.png" id="logo_foo"></a>
                     </div>
-
-                    <p><b>הושט לי יד - עמותה לנוער במצבי סיכון</b> 
-                    <br><br>אבן גבירול 26, רמת גן, ת.ד 52217
-                    <br><br>טל. 03-3657777 פקס. 03-2550319
-                    <br><br><b>hoshetLiYad@gmail.com</b></p>
+                    <div class="col-sm-9">
+                        <h4 class="title" >הושט לי יד - ארגון לנוער במצבי סיכון</h4>
+                        <p id="about"> 
+                        <br>אבן גבירול 26, רמת גן, ת.ד 52217
+                        <br>טל. 03-3657777 פקס. 03-2550319
+                        <br><b>hoshetLiYad@gmail.com</b></p>
+                    </div>
                 </div>
                 
-            </div>
+                <hr>
+                
+                <div class="row text-center">
+                    <ul class="social-icon">
+                        <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    </ul>
+                </div>
+            </div>	
         </footer>
         
-        
         <script>
+        // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
+        nl_lang = "he";
+        // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
+        nl_pos = "bl";
+        // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
+        nl_link = "0";
+        // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
+        nl_color = "gray ";
+        // האם התוסף יוצג כסרגל או כלחצן
+        nl_compact = "1";
+        // האם לפתוח תפריט אחד בכל פעם
+        nl_accordion = "0";
         </script>
+        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
+        </script>
+        
     </body>
 </html>
