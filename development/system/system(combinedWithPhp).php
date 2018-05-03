@@ -1,3 +1,77 @@
+<?php
+$servername = "localhost:3306";
+$username = "gabriellasi";
+$password = "]Tf07@MEeG4e";
+$dbname = "gabriell_youth_at_risk";
+
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+     die("Connection failed: " . $conn->connect_error);
+} 
+
+mysqli_set_charset($conn,"utf8");
+
+/*$shelterDestinationSQL = "SELECT address FROM shelter";*/
+/*$groupDestinationSQL = "SELECT address FROM support_group";*/
+
+
+$shelterDestinationSQL = "SELECT address FROM shelter";
+$groupDestinationSQL =  "SELECT address FROM support_group";
+
+$shelterDestination_res=$conn->query($shelterDestinationSQL);
+$groupDestination_res=$conn->query($groupDestinationSQL);
+
+$shelterArr= array();
+$groupArr= array();
+
+while($rowShelter=mysqli_fetch_assoc($shelterDestination_res)){
+    $shelterArr[]=$rowShelter['address'].'|';
+}
+
+while($rowGroup=mysqli_fetch_assoc($groupDestination_res)){
+    $groupArr[]=$rowGroup['address'].'|';
+}
+
+
+foreach($shelterArr as $valueShelter){
+    echo $valueShelter . "<br>";
+}
+
+
+foreach($groupArr as $valueGroup){
+    echo $valueGroup . "<br>";
+}
+
+//use mysqli->affected_rows
+
+//this will return a nested array
+
+$destinationsShelter = implode($shelterArr);
+
+$originCity = $_POST['city1'];
+
+echo $originCity;
+//echo $origin;
+//echo $_POST['city'];
+
+$urlContentsShelter = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=".urlencode($_POST['city1'])."&destinations=".urlencode($destinationsShelter)."&key=AIzaSyAgnrRznulN8DCt5jeMMrQf75HwV0f6thM";
+
+//*$urlContentsGroup = "https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&origins=".urlencode($_GET[''])."&destinations=".urlencode($rowGroup)."&key=AIzaSyAgnrRznulN8DCt5jeMMrQf75HwV0f6thM";*/
+
+
+
+//free results
+/*mysqli_free_result($rowShelter);
+mysqli_free_result($rowGroup);*/
+
+
+$data = file_get_contents($urlContentsShelter);
+$distancesShelter = json_decode($data);
+?>
+
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
     <head>
@@ -61,11 +135,14 @@
                             <label for="street">הכנס/י רחוב:</label>
                             <input type="text" class="form-control" id="street" name="street" placeholder="הכנס/י רחוב" required>
                         </div>
-
+                        <script>
+                            
+                            var cityValue = e.options[e.selectedIndex].value;
+                        </script>
                         <div class="form-group">
                         <p class="required">*</p>
                         <label for="riskType">תחום סיכון: </label>
-                        <select class="form-control" id="riskType" name="riskType" required>
+                        <select class="form-control" id="ristType" name="riskType" required>
                         <option value="" disabled selected>בחר/י תחום סיכון</option>
                         <option value="1" disab>פגיעה מינית</option>
                         <option value="2">התעללות במשפחה</option>
@@ -88,12 +165,19 @@
                             <button type="submit" class="btn">Submit
                             </button>
                         </div>
+                    
+                    <?php
+                    if($distancesShelter){
+                        print_r($distancesShelter);
+                    }
+                    
+                    ?>
                         </form>
                     </div>
             </div>
             </main>
         
-        <footer dir="rtl">
+                <footer dir="rtl">
             <div class="foo">
                 <div id="in_foo">
                     <div id="face_gma">
@@ -187,21 +271,8 @@
                 txt+="<option>"+cities[x].name;
             }
             txt+="</select>"
-            document.getElementById("city").innerHTML=txt;
-            printOb();
+            document.getElementById("city1").innerHTML=txt;
         };
-            
-            function printOb(){
-            var obj = document.getElementsByTagName('select');
-            console.log(obj);
-            console.log(obj[0]);
-                        
-            
-            var select = obj[0];
-            //this should have an event handler for a click on submit!!!! 
-            var cityName = select.options[select.selectedIndex].text;
-            console.log(cityName);
-}
         </script>
 
     </body>
