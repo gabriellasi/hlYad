@@ -1,30 +1,7 @@
-
-
-
-
-
-.foo{
-    width: 100%;
-   background-color: #99004d;
-    height: 20%;
-    
-}
-
-.foo #in_foo{
-    padding-top: 40px;
-    padding-right: 30px;
-}
-
-.foo #in_foo p{
-    color: white;
-}
 .fa {
-  padding: 20px;
   font-size: 30px;
-  width: 50px;
   text-align: center;
   text-decoration: none;
-  margin: 5px 2px;
   border-radius: 50%;   
 }
 
@@ -32,25 +9,82 @@
     opacity: 0.7;
 }
 
-.fa-facebook {
-  background: #3B5998;
-  color: white;
+.col-sm-6 h2{
+    text-align: center;
 }
 
-.fa-google {
-  background: #dd4b39;
-  color: white;
+.col-sm-6 p{
+    text-align: center;
 }
 
-.foo #face_gma p{
-    color:#black;
-    font-size: 18px;
-    padding-right:20px;
+form{
+    font-family: gisha;
 }
 
-#face_gma{
-    float: left;
-    margin-left:200px;
-    margin-top: 0px;
-    width: 150px;
+input[type=tel]{
+    /*background-image: url('mobile.png');
+    background-size: 30px 22.5px;
+    background-position: 100%; 
+    background-repeat: no-repeat;*/
+    padding-right: 15px;
+    font-size: 17px;
+}
+input[type=text]{
+    /*background-image: url('calendar.png');
+    background-size: 20px 15px;
+    background-position: 100%; 
+    background-repeat: no-repeat;*/
+    padding-right: 15px;
+    font-size: 17px !important;
+}
+
+input {
+    caret-color:#822040;
+}
+
+select{
+    display:block !important;
+    width:100%;
+    height:34px;
+    padding:6px 12px;
+    font-size:17px !important;
+    line-height: 3.428571;
+    color:#555;
+    border:1px solid #ccc;
+    font-family:inherit;
+    margin: 0;
+    border-radius: 4px;
+    box-shadow:insert 0 1px 1px rgba(0,0,0,.075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    font:inherit;
+    caret-color: rgb(130,32,64);
+    box-sizing: border-box;
+    cursor:pointer;
+    /*background-image: url('location.png');
+    background-size: 15px;
+    background-position: 100%;
+    background-repeat: no-repeat;*/
+    padding-right: 15px;
+}
+
+    
+.btn:hover{
+    transform: scale(1.05);
+}
+input[type=submit]{
+    font-size:20px;
+    max-width: 150px;
+    background-color:#822040;
+    border-color:#822040;
+    width:100px;
+
+}
+input[type=submit]:hover{
+    border-color:#822040;
+    background-color:#822040;
+
+}
+
+.abcRioButton{
+    margin:auto;
 }

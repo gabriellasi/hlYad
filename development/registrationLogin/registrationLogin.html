@@ -1,71 +1,108 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
   <head>
-      <link href="https://fonts.googleapis.com/css?family=Courgette" rel="stylesheet">
-      <link href='https://fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
       <title>הושט לי יד</title>
       <meta charset="utf-8">
-      <link rel="icon" href="treeLogo.png">
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link rel="icon" href="logo_icon.png">
+      <link rel="stylesheet" type="text/css" href="joinus.css">
       <link rel="stylesheet" href="registrationLogin.css">
-      <link rel="stylesheet" type="text/css" href="styleHomePageYouth.css">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-      <link rel="stylesheet" href="assets/css/Footer-with-logo.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+      <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       
       <meta name="google-signin-scope" content="profile email">
-      <meta name="google-signin-client_id" content="357853947124-4n5dpg4qqnukh7oemaql77ru6f8ch37k.apps.googleusercontent.com">
+      <meta name="google-signin-client_id" content="230287754090-959u5p3brfb0l6tv1vd4gdl7hlmcr1t9.apps.googleusercontent.com">
       <script src="https://apis.google.com/js/platform.js" async defer></script>
-     
   </head>
     
     <body>
-        <header>
+        <div class="header">
+            <div id="log">        
+            <i id="logIn"  class="fa" title="התחבר" >&#xf007;</i>
+            </div>
+            
+            <div class="text-center"> 
+                <a href="#"><img id="logo" src="logo.png"></a>
+            </div>
+            
             <div class="pointer">
-                <i id="logIn" style="font-size:24px" class="fa" title="התחבר">&#xf007;</i>
-                <div id="search5back">
-                    <img id="logo" src="treeLogo.png">
+                <div calss="navbar">
+                    <nav class="stroke">
+                        <ul>
+                          <li><a href="#">דף הבית</a></li>
+                          <li><a href="#">אודות</a></li>
+                          <li><a href="#">תחומי פעילות</a></li>
+                          <li><a href="#">התנדבות</a></li>
+                          <li><a href="#">צור קשר</a></li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
-        </header>
+        </div>
         
-        <nav>
-            <ul class="nav nav-tabs">
-                <li title="not supported"><a href="#">דף הבית</a>
-                </li>
-                <li role="presentation"><a href="#">אודות</a></li>
-                <li title="not supported" role="presentation"><a href="#">יוצאים בשאלה</a></li>
-                <li title="not supported" role="presentation"><a href="#">יוצאים מהארון</a></li>
-                <li title="not supported" role="presentation"><a href="#">פגיעה מינית</a></li>
-                <li title="not supported" role="presentation"><a href="#">נוער בסיכון</a></li>
-                <li title="not supported" role="presentation"  class="active"><a href="#">רישום לאתר</a></li>
-            </ul>
-        </nav>
+        <a href="#" onclick="signOut();" style="font-family: gisha;font-size: 20px;font-weight: bold;display: block;text-align: center;">התנתק</a>
+        <script>
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();   auth2.signOut().then(function () {
+                    console.log('User signed out.');
+                });
+            }
+        </script>
         
-        <p id="massage1"><a id="barContact" title="not supported" href="#"><b>לחץ כאן ומלא את פרטיך, ונציג מטעמינו יחזור אליך במהרה</b></a><p/>
-        
-        
-        
-<a href="#" onclick="signOut();">התנתק</a>
-<script>
-  function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
-</script>
         <main>
+            <div class="page-header" style="border-bottom: 1px solid #E8AFBF;">
+                <h3 id="title" style="font-family: 'Amatic SC'; font-size: 50px; color:  #822040;">כניסה  למערכת</h3>
+            </div>
+            
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-4 login">
-                        <h4>האם אתה כבר רשום?</h4>
-                        <form>
-                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+                    
+                    <div class="col-sm-6 login">
+                        <h2>רוצה להשאיר אצלנו עוד פרטים?</h2>
+                        <p class="text-center">מערכת <b>הושט לי יד</b> מאפשרת רישום  פרטים נוספים לגבייך 
+                        [כגון: גיל, איזור מגורים, טלפון]<br>
+                        <span style="color:red;font-weight: bold;">*שלב זה אינו חובה בשלב הכניסה למערכת  </span>
+                        </p>
+                        <form id="registrationForm" action="#" method="post" onsubmit="">
+                            <div class="form-group">
+                                <label for="phoneNum">מספר טלפון</label>
+                                <input class="form-control" type="tel" name="phoneNum" placeholder="מספר טלפון" pattern="(?=.*[0-9]).{9,10}">
+                            </div>
+                            <div class="form-group">
+                                <label for="city">שם ישוב:</label>
+                                <p id="city" name="city1" placeholder="שם ישוב" required="" value="">
+                            </div>
+                            <div class="form-group">
+                                <label for="age">גיל:
+                                </label>
+                                <input class="form-control" type="text" placeholder="גיל" value="">
+                            </div>
+                            <input type="submit" class="btn btn-info btn-lg" value="הצטרף" onsubmit="loadModal()">
+                        </form>
+
+                    </div>
+                    
+                    <div class="col-sm-6 registration">
+                        <h2>כניסה עם חשבון Gmail</h2>
+                        <form class="form-row">
+                            <p class="text-center">בעת הכניסה, מערכת <b>הושט לי יד</b> תשמור את כתובת המייל והשם המלא המקושר לכתובת.</p><br><br>
+                            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark" data-onfailure="onFailure"></div>
                             <script>
-                              function onSignIn(googleUser) {
+                                function onFailure(error) {
+                                    console.log(error);
+                                }
+                                
+                                function onSignIn(googleUser) {
                                 // Useful data for your client-side scripts:
+                                console.log('Logged in as:');
                                 var profile = googleUser.getBasicProfile();
                                 console.log("ID: " + profile.getId()); // Don't send this directly to your server!
                                 console.log('Full Name: ' + profile.getName());
@@ -77,47 +114,87 @@
                                 // The ID token you need to pass to your backend:
                                 var id_token = googleUser.getAuthResponse().id_token;
                                 console.log("ID Token: " + id_token);
-                              };
+                                updateToken(id_token);
+                                        
+                                    };
+                                
+                                function updateToken(tokenid){
+                                    $.post("authenticate.php",
+                                            { id_token: tokenid   },
+                                            function(){
+                                            alert("Successfuly added token");
+                                            });
+                                        }                                
                             </script>
                         </form>
                     </div>
-                    
-                    <div class="col-sm-7 registration">
-                        <h4>הירשם למערכת "הושט לי יד"</h4>
-                        <form class="form-row">
-                            <div class="col">
-                                <label for="inputEmail4">Email</label>
-                                <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
-                            </div>
-                            <div class="col">
-                                <label for="inputPassword4">Password</label>
-                                 <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
-                            </div>
-                        </form>
-                    </div>
+
                 </div>
             </div>
         </main>
         
-        <img id="acessability" src="accessbility.png" title="acessability-not supported" />
-        
-          <footer dir="rtl">
-            <div class="foo">
-                <div id="in_foo">
-                    <div id="face_gma">
-                    <p> בקרו אותנו</p>
-                    <a href="#" class="fa fa-facebook"></a>
-                    <a href="#" class="fa fa-google"></a>
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="#"><img src="logo_icon.png" id="logo_foo"></a>
                     </div>
-
-                    <p><b>הושט לי יד - עמותה לנוער במצבי סיכון</b> 
-                    <br><br>אבן גבירול 26, רמת גן, ת.ד 52217
-                    <br><br>טל. 03-3657777 פקס. 03-2550319
-                    <br><br><b>hoshetLiYad@gmail.com</b></p>
+                    <div class="col-sm-9">
+                        <h4 class="title" >הושט לי יד - ארגון לנוער במצבי סיכון</h4>
+                        <p id="about"> 
+                        <br>אבן גבירול 26, רמת גן, ת.ד 52217
+                        <br>טל. 03-3657777 פקס. 03-2550319
+                        <br><b>hoshetLiYad@gmail.com</b></p>
+                    </div>
                 </div>
                 
-            </div>
+                <hr>
+                
+                <div class="row text-center">
+                    <ul class="social-icon">
+                        <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    </ul>
+                </div>
+            </div>	
         </footer>
         
+        <script>
+        // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
+        nl_lang = "he";
+        // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
+        nl_pos = "bl";
+        // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
+        nl_link = "0";
+        // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
+        nl_color = "gray ";
+        // האם התוסף יוצג כסרגל או כלחצן
+        nl_compact = "1";
+        // האם לפתוח תפריט אחד בכל פעם
+        nl_accordion = "0";
+        </script>
+        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
+        </script>
+        <script>
+        var x, txt="";
+        var requestURL = 'http://gabriellasi.mtacloud.co.il/system/cities.json';
+         var request = new XMLHttpRequest();
+        request.open('POST', requestURL);
+        request.responseType = 'text';
+        request.send();
+        request.onload=function (){
+            var citiesText=request.response;
+            var cities=JSON.parse(citiesText);
+            txt+="<select>"
+            txt+="<option disabled selected>בחר/י ישוב"
+            for(x in cities){
+                txt+="<option>"+cities[x].name;
+            }
+            txt+="</select>"
+            document.getElementById("city").innerHTML=txt;
+        };
+        </script>
     </body>
 </html>
