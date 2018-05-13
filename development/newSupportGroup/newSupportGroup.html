@@ -1,27 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+    <title> הושט לי יד</title>
 	<meta charset="utf-8">
-	<title>הושט לי יד</title>
 	<link rel="icon" href="logo_icon.png">
-   
+        <link rel="stylesheet" type="text/css" href="homePageStyle.css">
+        <link rel="stylesheet" type="text/css" href="newSupportGroup.css"> 
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
-           <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" >
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="homePageStyle.css">
-        <link rel="stylesheet" type="text/css" href="newSupportGroup.css"> 
+
+
      </head>
     
     <body dir="rtl">
@@ -63,9 +55,11 @@
                         <label for="supportGroupName">
                             שם קבוצת התמיכה: 
                         </label>
-                        <input type="text" class="form-control" id="supportGroupName" name="supportGroupName" placeholder=" שם קבוצת התמיכה" required title="בבקשה הכנס/י את שם בית המחסה" pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        <input type="text" class="form-control" id="supportGroupName" name="supportGroupName" placeholder=" שם קבוצת התמיכה"
+                         title="בבקשה הכנס/י את שם בית המחסה"
+                        required pattern="(?=.*[\u0590-\u05FF]).{2,}"
                         oninvalid="setCustomValidity('אנא הכנס/י שם בית מחסה בעברית המכיל לפחות 2 תווים')"
-                         oninput="setCustomValidity('')"/>
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
                     </div>
                     
                     <div class="form-group">
@@ -75,10 +69,13 @@
                         <label for="supportGroupManager">
                             שם מנהל קבוצת התמיכה:
                         </label>
-                        <input type="text" class="form-control" id="supportGroupManager" name="supportGroupManager" placeholder=" שם מנהל קבוצת התמיכה" required title="בבקשה הכנס/י את שם מנהל בית המחסה" pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        <input type="text" class="form-control" id="supportGroupManager" name="supportGroupManager" placeholder=" שם מנהל קבוצת התמיכה"
+                        required title="אנא מלא/י שדה זה"
+                          pattern="(?=.*[\u0590-\u05FF]).{2,}"
                         oninvalid="setCustomValidity('אנא הכנס/י שם מנהל/ת 
                         בעברית המכיל לפחות 2 תווים')"
-                         oninput="setCustomValidity('')"/>
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                        />
                     </div>
                     
                     <div class="form-group">
@@ -99,9 +96,11 @@
                         <label for="street">
                             רחוב קבוצת התמיכה:
                         </label>
-                        <input type="text" class="form-control" id="street" name="street" placeholder=" רחוב קבוצת התמיכה" required title="בבקשה מלא/י שדה זה" pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        <input type="text" class="form-control" id="street" name="street" placeholder=" רחוב קבוצת התמיכה"
+                        required title="בבקשה מלא/י שדה זה"
+                        pattern="(?=.*[\u0590-\u05FF]).{2,}"
                         oninvalid="setCustomValidity('אנא הכנס/י כתובת המכילה לפחות 2 תווים')"
-                         oninput="setCustomValidity('')"/>
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
                     </div>
                     
                      <div class="form-group">
@@ -113,7 +112,7 @@
                         </label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="כתובת המייל של קבוצת התמיכה " required title="בבקשה הכנס/י '@' בכתובת המייל שלך" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
                         oninvalid="setCustomValidity('כתובת מייל לא תקינה. בבקשה הכנס @ בכתובת המייל שלך')"
-                         oninput="setCustomValidity('')"/>
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
                     </div>
                     
                     <div class="form-group">
@@ -125,7 +124,7 @@
                         </label>
                         <input type="tel" class="form-control" id="phone" name="phone" placeholder="מספר הטלפון של קבוצת התמיכה" required title="בבקשה מלא/י שדה זה" pattern="(?=.*[0-9]).{9,10}"
                         oninvalid="setCustomValidity(' אנא הכנס/י מספר טלפון המכיל 9-10 ספרות ')"
-                         oninput="setCustomValidity('')"/>
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"/>
                     </div>
                     
                     <div class="form-group">
@@ -148,6 +147,46 @@
                             <option value="8">חזרה בשאלה</option>
                         </select>
                     </div>
+                    
+                                        <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="min_age">
+                            גיל מינימלי:
+                        </label>
+                        <input type="text" class="form-control" id="min_age" name="min_age" placeholder="אנא הכנס/י את הגיל המינימלי של הנער/ה" required title="אנא הכנס/י גיל מינימלי " pattern="(?=.*[0-9]).{1-3}"
+                        oninvalid="setCustomValidity('אנא הכנס/י גיל מינמלי המכיל ספרה אחת לפחות')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="max_age">
+                            גיל מקסימלי:
+                        </label>
+                        <input type="text" class="form-control" id="max_age" name="max_age" placeholder="אנא הכנס/י את הגיל המקסימלי של הנער/ה" required title="אנא הכנס/י גיל מקסימלי  " pattern="(?=.*[0-9]).{1-3}"
+                        oninvalid="setCustomValidity('אנא הכנס/י גיל מקסימלי המכיל ספרה אחת לפחות')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="url">
+                            אתר בית המחסה:
+                        </label>
+                        <input type="url" class="form-control" id="url" name="url" placeholder="אנא הכנס/י את הגיל המקסימלי של הנער/ה" required title="אתר האינטרנט של בית המחסה  " 
+                        pattern="^(https?://)?([a-zA-Z0-9]([a-zA-ZäöüÄÖÜ0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$"
+                        oninvalid="setCustomValidity('אנא הכנס/י את כתובת url של בית המחסה')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
                    
                     <div class="check">
                         <p class="required">
@@ -159,9 +198,9 @@
                         </label>
                     </div>
                     
-                    <input type="hidden" id="cityChange" name="cityName" value="">
+                    <input type="hidden" id="cityChange" name="cityName" value="" required>
                     
-                    <input type="submit" class="btn btn-info btn-lg" value="הצטרף" onsubmit="loadModal()"  >
+                    <input type="submit" class="btn btn-info btn-lg" value="הצטרף"  >
                     
                     
                     <!-- Modal -->
@@ -173,17 +212,14 @@
                                     <button type="button" class="close" data-dismiss="modal">&times;
                                     </button>
                                 </div>
-                                <div class="modal-body">
-                                    <p id="massege">
-                                        <b>הצטרפת בהצלחה למאגר הושט לי יד!</b>
-                                    </p>
+                                   <div class="modal-body" id="data">
                                 </div>
                                 <div class="modal-footer">
                                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="homePage()">
-                                   <b>חזור לדף הבית</b>
+                                   חזרה לדף הבית
                                     </button>
                                     <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetForm()">
-                                        <b>הוסף קבוצת תמיכה נוספת</b>
+                                        הוספת קבוצת תמיכה חדשה
                                     </button>
                                 </div>
                             </div>
@@ -220,34 +256,36 @@
         </footer>
         
 
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
-      </script>
-		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
-      </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+    </script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+    </script>
     <script src="http://malsup.github.com/jquery.form.js"></script> 
-        
-    <script>
+    
+    <script> 
+            $(function() {
+            $('#join').submit(function (event) {
+                event.preventDefault();
+                event.returnValue = false;
+                $.ajax({
+                    type: 'POST',
+                    url: 'newSupportGroup.php',
+                    data: $('#join').serialize(),
+                    success: function(data) {
+                    $('#data').html(data);
+                    $('#myModal').modal({
+                        backdrop: 'static',
+                        keyboard: true,
+                        show: true
+                    });
+                }
+            });
+        });
+    });
 
-        $('#join').ajaxForm(function() { 
-              $('#myModal').modal('show');
+    </script> 
             
-            });; 
-    </script>
-        
     <script>
-            function resetForm(){
-             document.getElementById("join").reset();
-            }
-    </script>
-        
-    <script>
-            function homePage(){
-                location.href='http://gabriellasi.mtacloud.co.il/home%20page/homePage.html';
-            }
-    </script>
-        
-        <script>
         var x, txt="";
         var requestURL = 'http://gabriellasi.mtacloud.co.il/system/cities.json';
          var request = new XMLHttpRequest();
@@ -257,46 +295,70 @@
         request.onload=function (){
             var citiesText=request.response;
             var cities=JSON.parse(citiesText);
-            txt+="<select>"
-            txt+="<option disabled selected>בחר/י ישוב"
+            txt+="<select required>"
+            txt+="<option disabled selected value>בחר/י ישוב"
             for(x in cities){
                 txt+="<option>"+cities[x].name;
             }
             txt+="</select>"
             document.getElementById("city").innerHTML=txt;
         };
-        </script>
-        
-        <script>
-            function getCity(){
-            var obj = document.getElementsByTagName('select');
-            console.log(obj);
-            console.log(obj[0]);
-            var select = obj[0];
-            //this should have an event handler for a click on submit!!!! 
-            var cityName = select.options[select.selectedIndex].text;
-             console.log(cityName);
-                //document.getElementById("cityChange").setAttribute("value",cityName);
+    </script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+        var elements = document.getElementsByTagName("select");
+       elements[0].oninvalid= function(e){
+            e.target.setCustomValidity("");
+                if (!e.target.validity.valid) {
+                    e.target.setCustomValidity("אנא בחר/י שם ישוב");
+                }
+       };
+      elements[0].oninput = function(e) {
+         e.target.setCustomValidity("");
             };
-   
-        </script>
+    </script>
+    
+    <script>
+        function getCity(){
+        var obj = document.getElementsByTagName('select');
+        console.log(obj);
+        console.log(obj[0]);
+        var select = obj[0];
+        //this should have an event handler for a click on submit!!!! 
+        var cityName = select.options[select.selectedIndex].text;
+            document.getElementById("cityChange").setAttribute("value",cityName);
+        };
+    </script>
         
-        <script>
-        // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
-        nl_lang = "he";
-        // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
-        nl_pos = "bl";
-        // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
-        nl_link = "0";
-        // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
-        nl_color = "gray ";
-        // האם התוסף יוצג כסרגל או כלחצן
-        nl_compact = "1";
-        // האם לפתוח תפריט אחד בכל פעם
-        nl_accordion = "0";
-        </script>
-        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
-        </script>
+    <script>
+    function resetForm(){
+     document.getElementById("join").reset();
+    }
+    </script>
+        
+    <script>
+    function homePage(){
+        location.href='http://gabriellasi.mtacloud.co.il/home%20page/homePage.html';
+    }
+    </script>
+        
+    <script>
+    // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
+    nl_lang = "he";
+    // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
+    nl_pos = "bl";
+    // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
+    nl_link = "0";
+    // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
+    nl_color = "gray ";
+    // האם התוסף יוצג כסרגל או כלחצן
+    nl_compact = "1";
+    // האם לפתוח תפריט אחד בכל פעם
+    nl_accordion = "0";
+    </script>
+    <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
+    </script>
             
     </body>
 </html>
