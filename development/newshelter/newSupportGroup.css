@@ -165,7 +165,7 @@ nav.fill ul li a:hover:after {
 #logIn{
     padding-top: 20px;
     padding-bottom: 20px;
-    padding-right: 50px;
+    padding-right: 40px;
     font-size:28px;
     cursor:pointer;
     float:right;
@@ -259,7 +259,7 @@ hr{
    -webkit-text-stroke-color:#822040;
     font-size:38px;
     font-family: 'Amatic SC', cursive;
-    margin-bottom:30px;
+  
 }
 .required{
     color:red;
@@ -287,17 +287,74 @@ width:6%;
 .form-control:focus{
     border-color:#822040;
 }
+input[type=tel]{
+    background-image: url('phone.png');
+    background-size: 20px 15px;
+    background-position: 100%; 
+    background-repeat: no-repeat;
+    padding-right: 30px;
+    font-size: 17px;
+}
 input {
   caret-color:#822040 ;
 }
 
 
+#shelterName{
+    background-image: url('shelter.png');
+    background-size: 20px 20px;
+    background-position: 100%; 
+    background-repeat: no-repeat;
+    padding-right: 30px;
+    
+}
+#shelterManager{
+    background-image: url('contact.png');
+    background-size: 15px 15px;
+    background-position: 100%; 
+    background-repeat: no-repeat;
+    padding-right: 30px; 
+}
+#ristType{
+    background-image: url('risk.png');
+    background-size: 20px 20px;
+    background-position: 100%; 
+    background-repeat: no-repeat;
+    padding-right: 30px; 
+}
+
+#street{
+    background-image: url('location.png');
+    background-size: 20px 20px;
+    background-position: 100%; 
+    background-repeat: no-repeat;
+    padding-right: 30px; 
+    
+}
+#email{
+    background-image: url('email.png');
+    background-size: 20px 20px;
+    background-position: 100%; 
+    background-repeat: no-repeat;
+    padding-right: 30px; 
+}
+
+#acessability{
+	margin-left:10px;
+	margin-bottom:5px;
+	clear:both;
+	width: 50px;
+    height: 50px;
+	float:left-side;
+	cursor:pointer;
+
+}
 .form{
-    font-family: gisha;
-    font-size:17px;
+    font-family: 'Amatic SC', cursive;
+    font-size:24px;
     max-width:500px;
-    margin-right: 50px;
-    margin-top:30px;
+    padding-right: 20px;
+    
 }
 .form-group, .check{
 max-width: 500px;
@@ -311,7 +368,7 @@ display:block !important;
 width:100%;
 height:34px;
 padding:6px 12px;
-font-size:14px !important;
+font-size:17px !important;
 line-height: 3.428571;
 color:#555;
 border:1px solid #ccc;
@@ -330,7 +387,7 @@ cursor:pointer;
     display:none;
 }
 input[type=text], input[type=email]{
-    font-size:14px;
+    font-size:17px;
 }
 input[type=submit]{
     font-size:20px;
@@ -338,22 +395,23 @@ input[type=submit]{
     max-width: 150px;
     background-color:#822040;
     border-color:#822040;
+    width:80px;
+
 }
 input[type=submit]:hover{
      border-color:#822040;
     background-color:#822040;
-    color:white;
 }
+.btn-info{
+    background-image: linear-gradient(to bottom,#822040 0 ,#822040 100% );
+}
+.modal-header .close {
+    margin-top: -2px;
+    font-size: xx-large;
+}
+
 .btn-default{
-    background-color: white;
+    font-size:20px;
+    color:#822040 !important;
     margin-right:20px;
-    font-weight:bold;
-}
-.modal-header .close{
-    margin-top:-2px;
-    font-size:xx-large;
-}
-.modal-body{
-    position:relative;
-    padding-right:35px !important;
 }

@@ -14,20 +14,43 @@ if ($conn->connect_error) {
 
 mysqli_set_charset($conn,"utf8");
 
-    
+$errors; // hold validation errors
+$data = array(); //  pass back data
+
 $shelterName=$_POST["shelterName"];
 $shelterManager=$_POST["shelterManager"];
 $riskType=$_POST["riskType"];
 $phone=$_POST["phone"];
-$address=$_POST["address"];
 $email=$_POST["email"];
+$city=$_POST["cityName"];
+$street=$_POST["street"];
+$address= $street . ' ' . $city;
+$minAge=$_POST["min_age"];
+$maxAge=$_POST["max_age"];
+$url=$_POST["url"];
+
+$checkExistVal="SELECT ID FROM shelter where name='$shelterName' and address='$address' and risk='$riskType'";
+$result = $conn->query($checkExistVal);
 
 
-$InsertShelter="INSERT INTO shelter (name,risk,manager,phone,address,mail) VALUES('".$shelterName."','".$riskType."','".$shelterManager."','".$phone."','".$address."','".$email."');";
+if($result->num_rows==0){  
+$InsertShelter="INSERT INTO shelter (name,risk,manager,phone,address,mail,min_age,max_age,website_url) VALUES('".$shelterName."','".$riskType."','".$shelterManager."','".$phone."','".$address."','".$email."','".$minAge."','".$maxAge."','".$url."');";
 $conn->query($InsertShelter);
+}
+else{
+    $errors = 'בית המחסה קיים במערכת';
+}
 
+if(!empty($errors)){
+    $data['success']=false;
+    $data['message']=$errors;
+}
+else{
+    $data['success']=true;
+    $data['message']='בית המחסה הוסף למערכת בהצלחה';
+}
 
-
+echo $data['message'];
 
 $conn->close();
 ?>

@@ -1,39 +1,29 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
+<html lang="en">
     <head>
-        <title> הושט לי יד</title>
-        <meta charset="utf8">
-        <link rel="shortcut icon" href="logo2.ico">
-        <link rel="stylesheet" type="text/css" href="newShelter.css">
-        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
+    <title> הושט לי יד</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="logo_icon.png">
+    <link rel="stylesheet" type="text/css" href="newShelter.css">
+        <link rel="stylesheet" type="text/css" href="homePageStyle.css"> 
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
     </head>
-
-    <body>   
-        <header>
-            <div id="log">        
-                <i id="logIn" class="fa" title="התחבר" >&#xf007;</i>
-                <p id="song">
-        "אִם תִּפְגֹּשׁ אָדָם שָׁבוּר
-        שֵׁב אִתּוֹ
-        עַל סַף הַשֶּׁבֶר הָאָרוּר
-        אַל תְּנַסֶּה לְתַקֵּן
-        אַל תִּרְצֶה שׁוּם דָּבָר
-        בְּיִרְאָה וּבְאַהֲבַת הַזּוּלָת
-        שֵׁב אִתּוֹ
-         שֶׁלֹּא יִהְיֶה שָׁם לְבַד."
-                </p> 
-            </div>
-        
-            <div class="present"> 
-                <a href="#"><img id="logo" src="Untitled.png"></a>
     
+    <body dir="rtl">
+        <div class="header">
+            <div id="log">
+                <i id="logIn"  class="fa" title="התחבר" >&#xf007;</i>
             </div>
-
+            
+            <div class="text-center">
+                <a href="#"><img id="logo" src="logo.png"></a>
+            </div>
+            
             <div class="pointer">
                 <div calss="navbar">
                     <nav class="stroke">
@@ -47,147 +37,334 @@
                     </nav>
                 </div>
             </div>
-        </header>
-    
-       <main>
-        <div id="frame">
-        <h2 id="pageTitle">הצטרפות בית מחסה </h2>
-       <div class="container form">
-		<form action="newShelter.php" dir="rtl" method="post">
-        <div class="form-group">
-            <p class="required">*</p>
-            <label for="shelterName">שם בית המחסה: </label>
-            <input type="text" class="form-control" id="shelterName" name="shelterName" placeholder="הכנס/י את שם בית המחסה" required>
-            </div>
-        <div class="form-group">
-            <p class="required">*</p>
-            <label for="shelterManager">שם מנהל בית המחסה:</label>
-            <input type="text" class="form-control" id="shelterManager" name="shelterManager" placeholder="הכנס/י את שם מנהל בית המחסה" required>
-            </div>
-            
-        <div class="form-group">
-            <p class="required">*</p>
-            <label for="riskType">תחום סיכון: </label>
-            <select class="form-control" id="ristType" name="riskType" required>
-            <option value="" disabled selected>בחר/י תחום סיכון</option>
-            <option value="1" disab>פגיעה מינית</option>
-            <option value="2">התעללות במשפחה</option>
-            <option value="3">אלכוהוליזם</option>
-            <option value="4">בית סוהר</option>
-            <option value="5">סמים</option>
-            <option value="6">מקרה התאבדות במשפחה</option>
-            <option value="7">להט"ב</option>
-            <option value="8">חזרה בשאלה</option>
-            </select>
-            </div>
-            
-        <div class="form-group">
-            <p class="required">*</p>
-            <label for="phone">טלפון בית המחסה:
-            </label>
-            <input type="tel" class="form-control" id="phone" name="phone" placeholder="הכנס/י את מספר הטלפון של בית המחסה" required>
-            </div>
-        <div class="form-group">
-            <p class="required">*</p>
-            <label for="address">כתובת בית המחסה: </label>
-            <input type="text" class="form-control" id="address" name="address" placeholder="הכנס/י את כתובת בית המחסה" required>
-            </div>
-        <div class="form-group">
-            <p class="required">*</p>
-            <label for="email">כתובת מייל: </label>
-            <input type="email" class="form-control" name="email" id="email" placeholder="הכנס/י את כתובת המייל של בית המחסה" required>
-            </div>
-        <div class="check">
-            <p class="required">*</p>
-            <label for="agree">
-            <input type="checkbox" name="agree" required> מאשר/ת את התנאים להצטרפות
-            </label>
-            </div>
-            <div class="text-center">
-                <button type="submit" class="btn">Submit</button></div>
-            
-        </form>
-        </div>  
+
         </div>
+        <hr>
         
-	</main>
-        
-        <footer dir="rtl">
-            <div class="foo">
-                <div id="in_foo">
-                    <div id="face_gma">
-                        <p> בקרו אותנו</p><br>
-                        <a href="#" class="fa fa-facebook"></a>
-                        <a href="#" class="fa fa-google"></a>
+        <main>
+            <div class="form">
+                <h2 id="pageTitle">
+                    הצטרפות בית מחסה
+                </h2>
+                <form action="newShelter.php" dir="rtl" method="post" id="join" onsubmit="getCity()">
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="shelterName">
+                            שם בית המחסה: 
+                        </label>
+                        <input type="text" class="form-control" id="shelterName" name="shelterName" placeholder="הכנס/י את שם בית המחסה"
+                        required pattern="(?=.*[\u0590-\u05FF]).{2,}" 
+                        title="אנא הכנס/י שם בית מחסה בעברית המכיל לפחות 2 תווים" 
+                        oninvalid="setCustomValidity('אנא הכנס/י שם בית מחסה בעברית המכיל לפחות 2 תווים');"
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
                     </div>
-                    <p id="about"><b>הושט לי יד - עמותה לנוער במצבי סיכון</b>
-                        <br><br>אבן גבירול 26, רמת גן, ת.ד 52217
-                        <br><br>טל. 03-3657777 פקס. 03-2550319
-                        <br><br><b>hoshetLiYad@gmail.com</b></p>
-                </div>            
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="shelterManager">
+                            שם מנהל בית המחסה:
+                        </label>
+                        <input type="text" class="form-control" id="shelterManager" name="shelterManager" placeholder="הכנס/י את שם מנהל בית המחסה"
+                         title="אנא הכנס/י שם מנהל/ת בעברית המכיל לפחות 2 תווים"
+                        required pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        oninvalid="setCustomValidity('אנא הכנס/י שם מנהל/ת בעברית המכיל לפחות 2 תווים');"
+                        onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                       <label for="city">
+                           שם ישוב:
+                        </label>
+                        <p id="city" name="city1" placeholder="שם ישוב" required
+                        >
+                        </p>
+                    </div>
+
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="street">
+                            רחוב בית המחסה:
+                        </label>
+                        <input type="text" class="form-control" id="street" name="street" placeholder="הכנס את רחוב בית המחסה" required title="אנא הכנס/י כתובת המכילה לפחות 2 תווים" pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        oninvalid="setCustomValidity('אנא הכנס/י כתובת המכילה לפחות 2 תווים')"
+                          onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                     <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="email">
+                            כתובת מייל:
+                        </label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="הכנס/י את כתובת המייל של בית המחסה" required title="בבקשה הכנס/י '@' בכתובת המייל שלך" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                        oninvalid="setCustomValidity('בבקשה הכנס/י @ בכתובת המייל שלך')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="phone">
+                            טלפון בית המחסה:
+                        </label>
+                        <input type="tel" class="form-control" id="phone" name="phone" placeholder="הכנס/י את מספר הטלפון של בית המחסה" required title="אנא הכנס/י מספר טלפון המכיל 9-10 ספרות" pattern="(?=.*[0-9]).{9-11}"
+                        oninvalid="setCustomValidity(' אנא הכנס/י מספר טלפון המכיל 9-11 ספרות ')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="riskType">
+                            תחום סיכון: 
+                        </label>
+                        <select class="form-control" id="ristType" name="riskType" required oninvalid="setCustomValidity('אנא בחר/י תחום סיכון')"
+                          onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                      >
+                    
+                            <option value="" disabled selected>בחר/י תחום סיכון</option>
+                            <option value="1" disab>פגיעה מינית</option>
+                            <option value="2">התעללות במשפחה</option>
+                            <option value="3">אלכוהוליזם</option>
+                            <option value="4">בית סוהר</option>
+                            <option value="5">סמים</option>
+                            <option value="6">מקרה התאבדות במשפחה</option>
+                            <option value="7">להט"ב</option>
+                            <option value="8">חזרה בשאלה</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="min_age">
+                            גיל מינימלי:
+                        </label>
+                        <input type="text" class="form-control" id="min_age" name="min_age" placeholder="אנא הכנס/י את הגיל המינימלי של הנער/ה" required title="אנא הכנס/י גיל מינימלי " pattern="(?=.*[0-9]).{1-3}"
+                        oninvalid="setCustomValidity('אנא הכנס/י גיל מינמלי המכיל ספרה אחת לפחות')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="max_age">
+                            גיל מקסימלי:
+                        </label>
+                        <input type="text" class="form-control" id="max_age" name="max_age" placeholder="אנא הכנס/י את הגיל המקסימלי של הנער/ה" required title="אנא הכנס/י גיל מקסימלי  " pattern="(?=.*[0-9]).{1-3}"
+                        oninvalid="setCustomValidity('אנא הכנס/י גיל מקסימלי המכיל ספרה אחת לפחות')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                    
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="url">
+                            אתר בית המחסה:
+                        </label>
+                        <input type="url" class="form-control" id="url" name="url" placeholder="אנא הכנס/י את הגיל המקסימלי של הנער/ה" required title="אתר האינטרנט של בית המחסה  " 
+                        pattern="^(https?://)?([a-zA-Z0-9]([a-zA-ZäöüÄÖÜ0-9\-]{0,61}[a-zA-Z0-9])?\.)+[a-zA-Z]{2,6}$"
+                        oninvalid="setCustomValidity('אנא הכנס/י את כתובת url של בית המחסה')"
+                         onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                    </div>
+                   
+                    <div class="check">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="agree">
+                            <input type="checkbox" name="agree" required
+                            title="בבקשה אשר/י שדה זה"
+                        oninvalid="setCustomValidity('בבקשה אשר/י שדה זה')"
+                          onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"> 
+                            מאשר/ת את התנאים להצטרפות
+                        </label>
+                    </div>
+                    
+                    <input type="text" id="cityChange" name="cityName" value="">
+                    
+                    <input type="submit" class="btn btn-info btn-lg" value="הצטרף" onsubmit="loadModal()"  >
+                    
+                    
+                    <!-- Modal -->
+                    <div class="modal fade" id="myModal" role="dialog">
+                        <div class="modal-dialog">
+                            <!-- Modal content-->
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal">&times;
+                                    </button>
+                                </div>
+                                <div class="modal-body" id="data">
+                                   
+                                </div>
+                                <div class="modal-footer">
+                               <button type="button" class="btn btn-default" data-dismiss="modal" onclick="homePage()">
+                                        חזרה לדף הבית
+                                    </button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="resetForm()">
+                                        הוספת בית מחסה חדש
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
+        </main>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="#"><img src="logo_icon.png" id="logo_foo"></a>
+                    </div>
+                    <div class="col-sm-9">
+                        <h4 class="title" >הושט לי יד - ארגון לנוער במצבי סיכון</h4>
+                            <p id="about"> 
+                            <br>אבן גבירול 26, רמת גן, ת.ד 52217
+                            <br>טל. 03-3657777 פקס. 03-2550319
+                            <br><b>hoshetLiYad@gmail.com</b></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row text-center">
+                    <ul class="social-icon">
+                        <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    </ul>
+                </div>
+            </div>	
         </footer>
         
-        <script>
-    // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
-    nl_lang = "he";
-    // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
-    nl_pos = "br";
-    // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
-    nl_link = "0";
-    // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
-    nl_color = "gray ";
-    // האם התוסף יוצג כסרגל או כלחצן
-    nl_compact = "1";
-    // האם לפתוח תפריט אחד בכל פעם
-    nl_accordion = "0";
-        </script>
-        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer></script>
+         
+            
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
       </script>
 		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
       </script>
-        <script> 
-    $(document).ready(function(){
-    $(".form-control").keydown(function(){
-        $(this).css("background-color", "antiquewhite");
+    <script src="http://malsup.github.com/jquery.form.js"></script> 
+ 
+    <script>
+        $(function() {
+        $('#join').submit(function (event) {
+            event.preventDefault();
+            event.returnValue = false;
+            $.ajax({
+                type: 'POST',
+                url: 'newShelter.php',
+                data: $('#join').serialize(),
+                success: function(data) {
+                $('#data').html(data);
+              
+                $('#myModal').modal({
+                    backdrop: 'static',
+                    keyboard: true,
+                    show: true
+                });
+            }
+        });
     });
-    $(".form-control").keyup(function(){
-        $(this).css("background-color", "antiquewhite");
     });
-    $(".form-control").keyup(function(){
-       if($(this).val() == '') 
-    {
-        $(this).css('background-color' , 'white');
-        }
-    });
-      $(".form-control").keydown(function(event){ 
-       if(($(this).val() == '') &&(event.which==9))
-    {
-        $(this).css('background-color' , 'white');
-        }
-});  
-        $("select").keydown(function(event){ 
-       if(($("option").val() == '') &&(event.which==9))
-    {
-        $(this).css('background-color' , 'white');
-        }
-            });
-         $("select").keydown(function(){
-        $("option").css("background-color", "antiquewhite");
-    });
-    $("select").keyup(function(){
-        $("option").css("background-color", "antiquewhite");
-    });
-     $("select").keyup(function(){
-       if($("option").val() == '') 
-    {
-        $(this).css('background-color' , 'white');
-        }
-    });
-        
-        
-});
+    </script> 
+    
+         <script>
+        var x, txt="";
+        var requestURL = 'http://gabriellasi.mtacloud.co.il/system/cities.json';
+         var request = new XMLHttpRequest();
+        request.open('POST', requestURL);
+        request.responseType = 'text';
+        request.send();
+        request.onload=function (){
+            var citiesText=request.response;
+            var cities=JSON.parse(citiesText);
+            txt+="<select required>"
+            txt+="<option disabled selected value>בחר/י ישוב"
+            for(x in cities){
+                txt+="<option>"+cities[x].name;
+            }
+            txt+="</select>"
+            document.getElementById("city").innerHTML=txt;
+        };
         </script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+            var elements = document.getElementsByTagName("select");
+           elements[0].oninvalid= function(e){
+                e.target.setCustomValidity("");
+                    if (!e.target.validity.valid) {
+                        e.target.setCustomValidity("אנא בחר/י שם ישוב");
+                    }
+           };
+          elements[0].oninput = function(e) {
+             e.target.setCustomValidity("");
+                };
+           
+        </script>
+        
+        <script>
+            function getCity(){
+            var obj = document.getElementsByTagName('select');
+            console.log(obj);
+            console.log(obj[0]);
+            var select = obj[0];
+            //this should have an event handler for a click on submit!!!! 
+            var cityName = select.options[select.selectedIndex].text;
+                document.getElementById("cityChange").setAttribute("value",cityName);
+            };
+   
+        </script>
+        <script>
+            function resetForm(){
+             document.getElementById("join").reset();
+            }
+        </script>
+        
+        <script>
+            function homePage(){
+                location.href='http://gabriellasi.mtacloud.co.il/home%20page/homePage.html';
+            }
+        </script>
+ <script>
+        // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
+        nl_lang = "he";
+        // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
+        nl_pos = "bl";
+        // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
+        nl_link = "0";
+        // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
+        nl_color = "gray ";
+        // האם התוסף יוצג כסרגל או כלחצן
+        nl_compact = "1";
+        // האם לפתוח תפריט אחד בכל פעם
+        nl_accordion = "0";
+        </script>
+        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
+        </script>
+
     </body>
 </html>
