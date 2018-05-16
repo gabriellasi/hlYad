@@ -1,0 +1,80 @@
+
+body {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+}
+
+main{
+    margin-right:0;
+}
+
+#pageTitle{
+    padding-bottom: 5px;
+    padding-top:5px;
+    color:white;
+    -webkit-text-stroke-width: 1.5px;
+   -webkit-text-stroke-color:#822040;
+    font-size:38px;
+    font-family: 'Amatic SC', cursive; 
+}
+.required{
+    color:red;
+    display:inline-block;
+}
+
+.container{
+    padding-right:20px;
+}
+
+.form-control{
+    border-color:darkgrey;
+}
+.form-control:focus{
+    border-color:#822040;
+}
+.form{
+    font-family: gisha;
+    font-size:17px;
+    display:block;
+    margin-right:20px;
+}
+
+.form-group, .check{
+max-width: 500px;
+}
+input[type=text]{
+    font-size:14px;
+}
+input[type=submit]{
+    font-size:17px;
+    font-weight: bold;
+    max-width: 150px;
+    border-color:#822040;
+    width:80px;    
+    background-color:#822040!important;
+    -webkit-appearance:button;
+}
+input[type=submit]:hover{
+     border-color:#822040;
+    background-color:#822040 !important;
+
+}
+.btn-info{
+    background-image: linear-gradient(to bottom,#822040 0 ,#822040 100% );
+}
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.modal-header .close {
+    margin-top: -2px;
+    font-size: xx-large;
+}
+.btn-default{
+    background-color: white;
+    margin-right:20px;
+}
+#message{
+    font-family:gisha;
+}
