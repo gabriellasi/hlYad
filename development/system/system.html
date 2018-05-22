@@ -58,9 +58,9 @@
                         <p id="city" name="city1" placeholder="שם ישוב"></p></div>
                         <div class="form-group">
                             <label for="street">
-                            רחוב בית המחסה:
+                            רחוב:
                         </label>
-                        <input type="text" class="form-control" id="street" name="street" placeholder="הכנס את רחוב בית המחסה" required title="אנא הכנס/י כתובת המכילה לפחות 2 תווים" pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        <input type="text" class="form-control" id="street" name="street" placeholder="הכנס/י רחוב " required title="אנא הכנס/י כתובת המכילה לפחות 2 תווים" pattern="(?=.*[\u0590-\u05FF]).{2,}"
                         oninvalid="setCustomValidity('אנא הכנס/י כתובת המכילה לפחות 2 תווים')"
                           onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
                        />
