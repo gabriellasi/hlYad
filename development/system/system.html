@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+    <head>
+    <title> הושט לי יד</title>
+	<meta charset="utf-8">
+	<link rel="icon" href="logo_icon.png">
+        <link rel="stylesheet" type="text/css" href="homePageStyle.css">
+        <link rel="stylesheet" type="text/css" href="system.css"> 
+
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
+    </head>
+
+   <body dir="rtl">
+        <div class="header">
+            <div id="log">
+                <i id="logIn"  class="fa" title="התחבר" >&#xf007;</i>
+            </div>
+            
+            <div class="text-center">
+                <a href="#"><img id="logo" src="logo.png"></a>
+            </div>
+            
+            <div class="pointer">
+                <div calss="navbar">
+                    <nav class="stroke">
+                        <ul>
+                          <li><a href="#">דף הבית</a></li>
+                          <li><a href="#">אודות</a></li>
+                          <li><a href="#">תחומי פעילות</a></li>
+                          <li><a href="#">התנדבות</a></li>
+                          <li><a href="#">צור קשר</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+
+        </div>
+        <hr>
+    
+       <main>
+        <div class="form">
+                <h2 id="pageTitle">
+                    התאמת גוף מטפל
+                </h2>
+                <form id="formWow" dir="rtl" onsubmit="getCity()" action="system.php" method="get">
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                       <label for="city">
+                           שם ישוב:
+                        </label>
+                        <p id="city" name="city1" placeholder="שם ישוב"></p></div>
+                        <div class="form-group">
+                            <label for="street">
+                            רחוב בית המחסה:
+                        </label>
+                        <input type="text" class="form-control" id="street" name="street" placeholder="הכנס את רחוב בית המחסה" required title="אנא הכנס/י כתובת המכילה לפחות 2 תווים" pattern="(?=.*[\u0590-\u05FF]).{2,}"
+                        oninvalid="setCustomValidity('אנא הכנס/י כתובת המכילה לפחות 2 תווים')"
+                          onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"
+                       />
+                        </div>
+                        
+                        
+                    <div class="form-group">
+                        <p class="required">
+                            *
+                        </p>
+                        <label for="riskType">
+                            תחום סיכון: 
+                        </label>
+                        <select class="form-control" id="ristType" name="riskType" required oninvalid="setCustomValidity('אנא בחר/י תחום סיכון')"
+                          onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');">
+                        <option value="" disabled selected>בחר/י תחום סיכון</option>
+                        <option value="1" disab>פגיעה מינית</option>
+                        <option value="2">התעללות במשפחה</option>
+                        <option value="3">אלכוהוליזם</option>
+                        <option value="4">בית סוהר</option>
+                        <option value="5">סמים</option>
+                        <option value="6">מקרה התאבדות במשפחה</option>
+                        <option value="7">להט"ב</option>
+                        <option value="8">חזרה בשאלה</option>
+                        </select>
+                        </div>
+                        
+                        <div class="form-group">
+                        <p class="required">*</p>
+                        <label for="age">הכנס/י גיל:</label>
+                        <input type="text" class="form-control" id="age" name="age" min="12" max="30" placeholder="הכנס/י גילך" required>
+                        </div>
+                    <input type="text" id="cityChange" name="cityName" value="">
+                    
+                        
+                           <input type="submit" class="btn btn-info btn-lg" value="התאם לי"> 
+                        
+                        </form>
+                    </div>
+           
+            </main>
+        
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <a href="#"><img src="logo_icon.png" id="logo_foo"></a>
+                    </div>
+                    <div class="col-sm-9">
+                        <h4 class="title" >הושט לי יד - ארגון לנוער במצבי סיכון</h4>
+                            <p id="about"> 
+                            <br>אבן גבירול 26, רמת גן, ת.ד 52217
+                            <br>טל. 03-3657777 פקס. 03-2550319
+                            <br><b>hoshetLiYad@gmail.com</b></p>
+                    </div>
+                </div>
+                <hr>
+                <div class="row text-center">
+                    <ul class="social-icon">
+                        <a href="#" class="social"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                        <a href="#" class="social"><i class="fa fa-google" aria-hidden="true"></i></a>
+                    </ul>
+                </div>
+            </div>	
+        </footer>
+        
+    
+
+        <script>
+        var x, txt="";
+        var requestURL = 'http://gabriellasi.mtacloud.co.il/system/cities.json';
+         var request = new XMLHttpRequest();
+        request.open('POST', requestURL);
+        request.responseType = 'text';
+        request.send();
+        request.onload=function (){
+            var citiesText=request.response;
+            var cities=JSON.parse(citiesText);
+            txt+="<select required>"
+            txt+="<option disabled selected value>בחר/י ישוב"
+            for(x in cities){
+                txt+="<option>"+cities[x].name;
+            }
+            txt+="</select>"
+            document.getElementById("city").innerHTML=txt;
+        };
+        </script>
+        
+        <script>
+            function getCity(){
+            var obj = document.getElementsByTagName('select');
+            console.log(obj);
+            console.log(obj[0]);
+            var select = obj[0];
+            //this should have an event handler for a click on submit!!!! 
+            var cityName = select.options[select.selectedIndex].text;
+            console.log(cityName);
+            
+                //var actionContent = "city.php?cityName="+cityName;
+                var formToChange = document.getElementById("formWow");
+               //formToChange.setAttribute("action",actionContent);
+                
+            console.log(formToChange);
+                document.getElementById("cityChange").setAttribute("value",cityName);
+            };
+   
+        </script>
+        
+    
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js">
+      </script>
+		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js">
+      </script>
+ <script>
+        // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
+        nl_lang = "he";
+        // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
+        nl_pos = "bl";
+        // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
+        nl_link = "0";
+        // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
+        nl_color = "gray ";
+        // האם התוסף יוצג כסרגל או כלחצן
+        nl_compact = "1";
+        // האם לפתוח תפריט אחד בכל פעם
+        nl_accordion = "0";
+        </script>
+        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
+        </script>
+    </body>
+</html>
