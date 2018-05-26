@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="heb">
     <head>
-	<meta charset="utf-8">
-	<title>הושט לי יד</title>
-	<link rel="icon" href="logo_icon.png">
-   
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
-           <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta charset="utf-8">
+    	<title>הושט לי יד</title>
+    	<link rel="icon" href="logo_icon.png">
+        <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" >
         <!-- Optional theme -->
@@ -106,11 +104,10 @@
                         <label for="massage">
                             הודעה:
                         </label>
-                        <textarea class="form-control" name="comments" maxlength="6000" minlength="10" rows="7" 
+                        <textarea class="form-control" name="comments" 
+                        id="comments" maxlength="6000" minlength="10" rows="7" 
                         required pattern="(?=.*[\u0590-\u05FF]).{10,}" 
-                        title="יש למלא שדה זה"
-                       oninvalid="setCustomValidity('אנא הכנס/י את הודעתך המכילה לפחות 10 תווים')"
-                       onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');"></textarea>
+                        title="יש למלא שדה זה" oninvalid="this.setCustomValidity('אנא הכנס/י הודעה בעברית המכילה לפחות 10 תווים')"></textarea>
                     </div>
 
                     <input type="submit" class="btn btn-info btn-lg" value="שלח" onsubmit="loadModal()"  >
@@ -203,7 +200,37 @@
                 location.href='http://gabriellasi.mtacloud.co.il/home%20page/homePage.html';
             }
         </script>
-                <script>
+        
+        
+        <script>
+        $('#comments').keyup(validateTextarea);
+
+        function validateTextarea() {
+            var errorMsg = "אנא הכנס/י הודעה בעברית המכילה לפחות 10 תווים";
+            var textarea = this;
+            var pattern = new RegExp('^' + $(textarea).attr('pattern') + '$');
+            // check each line of text
+            $.each($(this).val().split("\n"), function () {
+                // check if the line matches the pattern
+                var hasError = !this.match(pattern);
+                if (typeof textarea.setCustomValidity === 'function') {
+                    textarea.setCustomValidity(hasError ? errorMsg : '');
+                } else {
+                    // Not supported by the browser, fallback to manual error display...
+                    $(textarea).toggleClass('error', !!hasError);
+                    $(textarea).toggleClass('ok', !hasError);
+                    if (hasError) {
+                        $(textarea).attr('title', errorMsg);
+                    } else {
+                        $(textarea).removeAttr('title');
+                    }
+                }
+                return !hasError;
+            });
+        }
+        </script>
+    
+        <script>
         // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
         nl_lang = "he";
         // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
