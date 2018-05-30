@@ -6,7 +6,6 @@ body {
 
 main {
    width: 100%;
-
 }
 
 .flex-center {
@@ -338,54 +337,4 @@ hr{
     font-family: gisha;
     font-size:18px;
     color:#fff;
-}
- .container-fluid {
-      padding-top: 70px;
-      padding-bottom: 70px;
-      max-width:800px;
-    margin-right: 50px;
-    margin-top:30px;
-  }
-.row img{
-    width:200px;
-    height: 150px;
-    margin-top: 5%;
-}
-#pageTitle{
-    padding-bottom: 5px;
-    padding-top:5px;
-    color:white;
-    -webkit-text-stroke-width: 1.5px;
-   -webkit-text-stroke-color:#822040;
-    font-size:38px;
-    font-family: 'Amatic SC', cursive;
-    margin-bottom:30px;
-}
-.row h2{
-        color:#822040;
-        font-family: gisha;
-        font-size:22px;
-}
-.row a{
-   text-decoration: none;
-    color:#822040;
-    font-weight: bold;
-    font-family: gisha;
-
-}
-.row a:hover{
- text-decoration: none;
-color:black;
-}
-.row p{
-            font-family: gisha;
-
-}
-
-.page-header{
-    border-top: 1px solid #E8AFBF;
-}
-
-#risk{
-    width: 200px;
 }
