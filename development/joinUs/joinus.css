@@ -154,14 +154,7 @@ nav.fill ul li a:hover:after {
     display: inline;
 }
 
-#logIn{
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 40px;
-    font-size:28px;
-    cursor:pointer;
-    float:right;
-}
+
 
 #description{
     font-size: 20px;
