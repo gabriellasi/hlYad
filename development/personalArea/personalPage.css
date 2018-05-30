@@ -1,0 +1,75 @@
+table{
+    font-family: gisha;
+    max-width:500px;
+    }
+button{
+    color: white;
+    background-color:#822040;
+    border-color:#822040;
+}
+tr{
+    padding:10px;
+}
+td{
+    margin-top:20px;
+    margin-bottom:20px;
+    margin-right:30px;
+    margin-left:30px;
+    width:397px;
+    height:43px;
+}
+th{
+    text-align:right;
+    margin-right:25px;
+    
+}
+input[type=submit]{
+    font-size:17px;
+    font-weight:bold;
+    font-family:gisha;
+    
+    background-color:#822040;
+    border-color:#822040;
+    display:block;
+    margin-top:40px;
+    
+    margin-bottom:30px;
+    } 
+input[type=submit]:hover{
+    background-color:#822040;
+    border-color:#822040;
+    color:white;
+  }
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+      box-shadow: none !important;
+      background-color:#822040 !important;
+      border-color:#822040;
+  }
+    .modal-header .close{
+        margin-top:-2px;
+        font-size:xx-large;
+    }
+    .modal-body{
+        position:relative;
+        padding-right:35px !important;
+    }
+    #pageTitle {
+    color:#822040;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size:38px;
+    margin-bottom: 30px;
+    margin-top: -20px;
+    padding-top:60px;
+            
+}
+#messageNotConected{
+    font-family: 'Amatic SC', cursive;
+    font-size:38px;
+    font-weight: bold;
+}
+#noHistoryMessage{
+   font-family: 'Amatic SC', cursive;
+    font-size:38px;
+    font-weight: bold; 
+}
