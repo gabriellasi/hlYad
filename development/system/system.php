@@ -1,4 +1,21 @@
 <?php
+session_start();
+
+if (isset($_SESSION["user"])){
+    $user = $_SESSION["user"];
+    $permit = $_SESSION["permit"];
+}
+else{
+    $user = "";
+    $permit = 0;
+}
+
+//echo $user. "<br>";
+//echo $permit. "<br>";
+
+?>
+
+<?php
 $servername = "localhost:3306";
 $username = "gabriellasi";
 $password = "]Tf07@MEeG4e";
@@ -77,6 +94,9 @@ foreach($groupArr as $valueGroup){
     $distanceResGroup[]=$destinationKM_group;
 }
 
+//print_r ($distanceResGroup);
+//print_r ($addressNamesGroup);
+
 $addressDistGroup= array_combine($distanceResGroup,$addressNamesGroup);
 ksort($addressDistGroup);
 
@@ -102,7 +122,6 @@ foreach($shelterArr as $valueShelter){
    $destinationKM=doubleval($destinationKM);
    //echo $destinationKM.'<br>';
    $distanceResShelter[]= $destinationKM;
-   
 }
 
 //echo "array of shelter distance without address" .'<br>';
@@ -149,6 +168,7 @@ $percentSupportCombine=array_combine($addressNamesGroup,$percentGroup);
 //echo "this is the combined 100 percent and address - support"."<br>";
 //print_r($percentSupportCombine);
 
+
 //grading the $percentShelterCombine array according to distance
 while($address = current($addressDistShelter)){
     
@@ -156,69 +176,116 @@ while($address = current($addressDistShelter)){
     $distanceKey = key ($addressDistShelter);
     //echo $distanceKey."<br>";
     $score=$percentShelterCombine[$address];
-    
+    //echo $score."<br>";
     if($distanceKey>="0" && $distanceKey <="5"){
         //echo $score;
     }
     elseif($distanceKey>"5" &&$distanceKey<="10"){
-        $score = $score-5;
+        $score = $score-2;
         //echo $score;
     }
     elseif($distanceKey>"10" &&$distanceKey<="15"){
-        $score = $score-7;
+        $score = $score-5;
         //echo $score;
     }
     elseif($distanceKey>"15" &&$distanceKey<="20"){
-        $score = $score-9;
+        $score = $score-7;
         //echo $score;
     }
     elseif($distanceKey>"20" &&$distanceKey<="30"){
-        $score = $score-11;
+        $score = $score-9;
         //echo $score;
     }
     elseif($distanceKey>"30" &&$distanceKey<="50"){
         $score = $score-13;
         //echo $score;
     }
+    elseif($distanceKey>"50" &&$distanceKey<="70"){
+        $score = $score-18;
+        //echo $score;
+    }
+    elseif($distanceKey>"70" &&$distanceKey<="90"){
+        $score = $score-22;
+        //echo $score;
+    }
     else{
-        $score = $score-15;
+        $score = $score-25;
         //echo $score;
     }
     $percentShelterCombine[$address]= $score;
+    //echo $percentShelterCombine[$address];
     next($addressDistShelter);
 }
 
-//print_r($percentShelterCombine);
+//print_r($percentShelterCombine)."<br>";
 
 //grading $percentShelterCombine array according to age
 //echo "this is the min and max age of every shelter"."<br>";
 while($grade = current($percentShelterCombine)){
     
     $addressKey = key ($percentShelterCombine);
-    $age_range ="SELECT min_age, max_age FROM shelter where address='$addressKey'";
+    //echo $addressKey;
+    $age_range ="SELECT min_age, max_age FROM shelter WHERE address='$addressKey'";
     $result = $conn->query($age_range);
     
+   /* if(!$result = $conn->query($age_range)){
+    die('There was an error running the query [' . $conn->error . ']');
+    }*/
     
+
     if($result->num_rows > 0){
         while($row = $result->fetch_assoc()){
             $min_age = $row['min_age'];
             $max_age = $row['max_age'];
+            //echo $min_age."<br>";
+            //echo $max_age."<br>";
         }
     }
-    //echo "min: ".$min_age."<br>";
-    //echo "max: ".$max_age."<br>";
-    $score=$percentShelterCombine[$addressKey];
+        
+    if($userAge<$min_age || $userAge>$max_age){
+        if($userAge < $min_age){
+             if(($min_age-$userAge) < 5){
+                  $percentShelterCombine[$addressKey]-=2;
+                    //$scoreGroup =$scoreGroup-2;
+             }
+             else if(($min_age-$userAge) < 8){
+                 $percentShelterCombine[$addressKey]-=4;
+                 //$scoreGroup =$scoreGroup-4;
+             }
+            else {
+                $percentShelterCombine[$addressKey]-=6;
+                 //$scoreGroup =$scoreGroup-6;
+             }
+         }
+        else if ($max_age<$userAge){
+            if(($userAge-$max_age) < 5){
+                $percentShelterCombine[$addressKey]-=2;
+                    //$scoreGroup =$scoreGroup-2;
+             }
+             else if(($userAge-$max_age) < 8){
+                 $percentShelterCombine[$addressKey]-=4;
+                // $scoreGroup =$scoreGroup-4;
+             }
+            else {
+                $percentShelterCombine[$addressKey]-=6;
+                 //$scoreGroup =$scoreGroup-6;
+             }
+         }
+     }
+     
+    /* if($userAge < $min_age || $max_age<$userAge){
+    $percentShelterCombine[$addressKey]-=5;
+
+    }*/
+
     
-    if($userAge < $min_age || $max_age<$userAge){
-        $score = $score-10;
-    }
-    
-    $percentShelterCombine[$addressKey]= $score;
+    //$percentShelterCombine[$addressKey]= $score;
+    //echo $percentShelterCombine[$addressKey]; 
     next($percentShelterCombine);
 }
 
 //echo "final grades after age and distance check"."<br>";
-//print_r($percentShelterCombine);
+//print_r($percentShelterCombine)."<br>";
 
 
 //grading the $percentSupportCombine array according to distance
@@ -229,65 +296,109 @@ while($addressGroup = current($addressDistGroup)){
     $distanceKeyGroup = key ($addressDistGroup);
     //echo $distanceKeyGroup."<br>";
     $scoreGruop=$percentSupportCombine[$addressGroup];
+    //echo $scoreGruop;
     
     if($distanceKeyGroup>="0" && $distanceKeyGroup <="5"){
         //echo $scoreGruop;
     }
     elseif($distanceKeyGroup>"5" && $distanceKeyGroup<="10"){
-        $scoreGruop = $scoreGruop-5;
+        $scoreGruop = $scoreGruop-2;
         //echo $scoreGruop;
     }
     elseif($distanceKeyGroup>"10" && $distanceKeyGroup<="15"){
-        $scoreGruop = $scoreGruop-7;
+        $scoreGruop = $scoreGruop-5;
         //echo $scoreGruop;
     }
     elseif($distanceKeyGroup>"15" && $distanceKeyGroup<="20"){
-        $scoreGruop = $scoreGruop-9;
+        $scoreGruop = $scoreGruop-7;
         //echo $scoreGruop;
     }
     elseif($distanceKeyGroup>"20" && $distanceKeyGroup<="30"){
-        $scoreGruop = $scoreGruop-11;
+        $scoreGruop = $scoreGruop-9;
         //echo $scoreGruop;
     }
     elseif($distanceKeyGroup>"30" && $distanceKeyGroup<="50"){
         $scoreGruop = $scoreGruop-13;
         //echo $scoreGruop;
     }
+    elseif($distanceKeyGroup>"50" && $distanceKeyGroup<="70"){
+        $scoreGruop = $scoreGruop-18;
+        //echo $scoreGruop;
+    }
+    elseif($distanceKeyGroup>"70" && $distanceKeyGroup<="90"){
+        $scoreGruop = $scoreGruop-22;
+        //echo $scoreGruop;
+    }
     else{
-        $scoreGruop = $scoreGruop-15;
+        $scoreGruop = $scoreGruop-25;
         //echo $scoreGruop;
     }
     $percentSupportCombine[$addressGroup]= $scoreGruop;
+    //echo $percentSupportCombine[$addressGroup];
     next($addressDistGroup);
 }
 
 //echo "precent support group combine array"."<br>";
-//print_r($percentSupportCombine);
+//print_r($percentSupportCombine)."<br>";
 
 //grading $percentSupportCombine array according to age
 //echo "this is the min and max age of every support group"."<br>";
 while($gradeSupport = current($percentSupportCombine)){
     
     $addressKeyGroup = key ($percentSupportCombine);
-    $age_range_group ="SELECT min_age, max_age FROM support_group where address='$addressKeyGroup'";
+    $age_range_group ="SELECT min_age, max_age FROM support_group WHERE address='$addressKeyGroup'";
     $resultGroup = $conn->query($age_range_group);
     
     
     if($resultGroup->num_rows > 0){
-        while($row = $resultGroup->fetch_assoc()){
-            $min_age_group = $row['min_age'];
-            $max_age_group = $row['max_age'];
+        while($rowGoup = $resultGroup->fetch_assoc()){
+            $min_age_group = $rowGoup['min_age'];
+            $max_age_group = $rowGoup['max_age'];
+            //echo $min_age_group."<br>";
+            //echo $max_age_group."<br>";
+        
+    }
+    
+            if($userAge <  $min_age_group || $userAge>$max_age_group){
+                if($userAge < $min_age_group){
+                     if(($min_age_group-$userAge) < 5){
+                          $percentSupportCombine[$addressKeyGroup]-=2;
+                            //$scoreGroup =$scoreGroup-2;
+                     }
+                     else if(($min_age_group-$userAge) < 8){
+                         $percentSupportCombine[$addressKeyGroup]-=4;
+                         //$scoreGroup =$scoreGroup-4;
+                     }
+                    else {
+                        $percentSupportCombine[$addressKeyGroup]-=6;
+                         //$scoreGroup =$scoreGroup-6;
+                     }
+                 }
+                else if ($max_age_group<$userAge){
+                    if(($userAge-$max_age_group) < 5){
+                        $percentSupportCombine[$addressKeyGroup]-=2;
+                            //$scoreGroup =$scoreGroup-2;
+                     }
+                     else if(($userAge-$max_age_group) < 8){
+                         $percentSupportCombine[$addressKeyGroup]-=4;
+                        // $scoreGroup =$scoreGroup-4;
+                     }
+                    else {
+                        $percentSupportCombine[$addressKeyGroup]-=6;
+                         //$scoreGroup =$scoreGroup-6;
+                     }
+                 }
+            }
+        
         }
-    }
-    //echo "min: ".$min_age_group."<br>";
-    //echo "max: ".$max_age_group."<br>";
-    $scoreGroup=$percentSupportCombine[$addressKeyGroup];
+
     
-    if($userAge <  $min_age_group ||  $max_age_group<$userAge){
-        $scoreGroup =$scoreGroup-10;
-    }
-    
-    $percentSupportCombine[$addressKeyGroup]= $scoreGroup;
+   /* if($userAge <  $min_age_group ||  $max_age_group<$userAge){
+        $percentSupportCombine[$addressKeyGroup]-=5;
+    }*/
+
+    //$percentSupportCombine[$addressKeyGroup]= $scoreGruop;
+    //echo $percentSupportCombine[$addressKeyGroup];
     next($percentSupportCombine);
 }
 
@@ -319,99 +430,148 @@ arsort($percentSupportCombine);
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Amatic SC" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="homePageStyle.css"> 
-
-        <style>
-            table{
-                
-                font-family: gisha;
-                
-            }
-            button{
-                color: white;
-                background-color:#822040;
-                border-color:#822040;
-            }
-            tr{
-                padding:20px;
-            }
-            td{
-                padding:20px;
-                width:397px;
-                height:43px;
-            }
-            th{
-                text-align:right;
-                
-            }
-            input[type=submit]{
-                font-size:20px;
-                font-weight:bold;
-                width:250px;
-                background-color:#822040;
-                border-color:#822040;
-                display:block;
-                margin-top:40px;
-                margin-right:50px;
-                margin-bottom:30px;
-                
-            }
-              input[type=submit]:hover{
-                 background-color:#822040;
-                border-color:#822040;
-                color:white;
-              }
-              #divSupport, #divShelter, #divLine{
-                  display:none;
-              }
-              .btn-info:hover, .btn-info:active, .btn-info:focus {
-                  box-shadow: none !important;
-                  background-color:#822040 !important;
-                  border-color:#822040;
-              }
-                .modal-header .close{
-                    margin-top:-2px;
-                    font-size:xx-large;
-                }
-                .modal-body{
-                    position:relative;
-                    padding-right:35px !important;
-                }
-                .form-control{
-                    width:80%;
-                    margin-bottom: 20px;
-                    margin-right:20px;
-                }
-              
-        </style>
+        <link rel="stylesheet" type="text/css" href="systemDesign.css"> 
+        
+        <script>
+        var permission = <?php echo $permit?>;
+        </script>
         
     </head>
     <body>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
         <div class="header">
             <div id="log">
-                <i id="logIn"  class="fa" title="התחבר" >&#xf007;</i>
+                <a href="http://gabriellasi.mtacloud.co.il/registrationLogin/registraion_latest.php"><i id="logIn"  class="fa" title="התחבר" >&#xf007;</i></a
             </div>
             
             <div class="text-center">
-                <a href="#"><img id="logo" src="logo.png"></a>
+                <a href="http://gabriellasi.mtacloud.co.il/home%20page/homePage.php"><img id="logo" src="logo.png"></a>
             </div>
             
-            <div class="pointer">
+            <a href="http://gabriellasi.mtacloud.co.il/contact%20us/contactPage.php" onclick="signOut();" id="signOut" style="display:none;"> התנתק</a>
+             
+             <script>
+                function signOut() {
+                    gapi.auth2.init();
+                    var auth2 = gapi.auth2.getAuthInstance();
+                    auth2.signOut().then(function () {
+                        console.log('User signed out.');
+                    });
+                    <?php
+                    session_unset($_SESSION["user"]);
+                    session_unset($_SESSION["permit"]);
+                    //$_SESSION["user"] = "";
+                    //$_SESSION["permit"]= 0;
+                    session_destroy();
+                    ?>
+                    window.location.reload();
+                    refreshPage();
+                }
+            </script>
+            
+            
+            <div id="wrapper">
+                <div class="overlay"></div>
+                <!-- Sidebar -->
+                <nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
+                    <ul class="nav sidebar-nav">
+                        <li class="sidebar-brand">
+                            <a name="hlyTitle">הושט לי יד</a>
+                        </li>
+                        <hr>
+                        <li>
+                            <a href="http://gabriellasi.mtacloud.co.il/home%20page/homePage.php">דף הבית</a>
+                        </li>
+                        <li>
+                            <a href="http://gabriellasi.mtacloud.co.il/about%20-%20try/about.php">אודות</a>
+                        </li>
+                        <li>
+                            <a href="http://gabriellasi.mtacloud.co.il/activities%20page/activities.php">תחומי פעילות</a>
+                        </li>
+                        <li>
+                            <a href="http://gabriellasi.mtacloud.co.il/joinUs/joinus.php">הצטרפות כגוף מטפל</a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- /#sidebar-wrapper -->
+                
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+                        <span class="hamb-top"></span>
+                        <span class="hamb-middle"></span>
+                        <span class="hamb-bottom"></span>
+                        </button>
+                </div>
+            </div>
+            
+            <div class="pointer" id="youthNav">
                 <div calss="navbar">
                     <nav class="stroke">
                         <ul>
-                          <li><a href="#">דף הבית</a></li>
-                          <li><a href="#">אודות</a></li>
-                          <li><a href="#">תחומי פעילות</a></li>
-                          <li><a href="#">התנדבות</a></li>
-                          <li><a href="#">צור קשר</a></li>
+                          <li><a href="http://gabriellasi.mtacloud.co.il/systemTryDesign/system.html">התאמת גוף מטפל</a></li>
+                          <li><a href="http://gabriellasi.mtacloud.co.il/Shelters%20list/shelterList.php">בתי מחסה</a></li>
+                          <li><a href="http://gabriellasi.mtacloud.co.il/support%20group%20list/supportTable.php">קבוצות תמיכה</a></li>
+                          <li><a href="http://gabriellasi.mtacloud.co.il/hot%20line%20list/hotLineTable.php">קווים חמים</a></li>
+                          <li><a href="http://gabriellasi.mtacloud.co.il/PersonalErea/personalPage_Trial.php" id="personalAreaLink" style="display:none;">איזור אישי</a></li>
+                          <li><a href="http://gabriellasi.mtacloud.co.il/contact%20us/contactPage.php">יצירת קשר</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
 
         </div>
-        <main>
+                </div>
+            </div>
+        </div>
+        </div>
+        <hr>
+        <script>
+            if (permission !=0){
+                    $("#signOut").css("display", "block");
+                }
+                //admin
+                if (permission == 1){
+                    $("#adminNav").css("display", "block");
+                    $("#careService").css("display", "block");
+                    $("#volunteerNav").css("display", "block");
+                }
+                
+                //youth
+                if (permission == 2){
+                    $("#youthNav").css("display", "block");
+                    $("#personalAreaLink").css("display", "block");
+                }
+                
+                //shelter
+                if (permission == 3){
+                    $("#careService").css("display", "block");
+                    $("#youthNav").css("display", "none");
+                }
+                
+                //support group
+                if (permission == 4){
+                    $("#careService").css("display", "block");
+                    $("#youthNav").css("display", "none");
+                }
+                
+                //volunteer
+                if (permission == 5){
+                    $("#volunteerNav").css("display", "block");
+                    $("#youthNav").css("display", "none");
+                }
+                
+        </script>
         
+        
+        <main>
+        <div class="container">
+        <h4 id="matchTitle">לתשומת לבך,
+            ההתאמה שבוצעה הינה אישית עבורך
+        ומבוססת על הגיל, המיקום ותחום הסיכון שהזנת  </h4><p>באפשרותך לבחור מספר גופי טיפול (בית מחסה וגם קבוצת תמיכה, או רק אחד מהשניים).</p></div>
+
 <?php
 
 
@@ -436,11 +596,13 @@ $idLines="divLine";
 $btnViewDataShelter="dataShelter";
 $btnViewDataSupport="dataSupport";
 $name="name";
+//$contatiner = "container";
 
 $typeCheckbox = "checkbox";
 $nameCheckboxSupport = "supportGroupCheck";
 $nameCheckboxShelter = "shelterCheck";
 
+echo "<div class='$Container'>";
 echo "<input type='$type' class='$btnClass' value='$btnValueSupport' id='$btnIdSupport'>";
 echo "<div id='$idSupport'>";
 echo "<div class='$Container'>";
@@ -450,25 +612,29 @@ echo "<table class='$Table' >
 while($gradeSupport = current($percentSupportCombine)){
     
     $addressKeyGroup = key ($percentSupportCombine);
+    //echo $addressKeyGroup;
     
     $resultGroups = "SELECT name FROM support_group WHERE address ='$addressKeyGroup'";
-    $resGroup = $conn->query($resultGroups);
-    
-    
-    if($resGroup->num_rows > 0){
+     $resGroup = $conn->query($resultGroups);
+
+
+   if($resGroup->num_rows > 0){
     while($rowGroup = $resGroup->fetch_assoc()){
-        echo "<tr><td>".$rowGroup["name"]."</td><td>".$gradeSupport."</td><td><button id='$rowGroup[$name]' class='$btnViewDataSupport'>מידע נוסף</button></td><td><input type='$typeCheckbox' name='$nameCheckboxSupport' value='$rowGroup[$name]' class='$btnCheck'></td></tr>";
-        
+      echo "<tr><td>".$rowGroup["name"]."</td><td>".$gradeSupport."%</td><td><button id='$rowGroup[$name]' class='$btnViewDataSupport'>מידע נוסף</button></td><td><input type='$typeCheckbox' name='$nameCheckboxSupport' value='$rowGroup[$name]' class='$btnCheck'></td></tr>";
+
     }
 }
-     next($percentSupportCombine);
+
+   next($percentSupportCombine);
 
 }
+
+
 echo "</table>";
 echo "</div>";
 echo"</div>";
 echo "</div>";
-
+//print_r($percentSupportCombine);
 
 echo "<input type='$type' class='$btnClass' value='$btnValueShelter' id='$btnIdShelter' >";
 echo "<div id='$idShelter'>";
@@ -486,9 +652,9 @@ while($gradeShelter = current($percentShelterCombine)){
     
     if($resShelter->num_rows > 0){
     while($rowShelter = $resShelter->fetch_assoc()){
-        echo "<tr><td>".$rowShelter["name"]."</td><td>".$gradeShelter."</td><td><button id='$rowShelter[$name]' class='$btnViewDataShelter'>מידע נוסף</button></td><td><input type='$typeCheckbox' name='$nameCheckboxShelter' value='$rowShelter[$name]' class='$btnCheck'></td></tr>";
-        
+        echo "<tr><td>".$rowShelter["name"]."</td><td>".$gradeShelter."%</td><td><button id='$rowShelter[$name]' class='$btnViewDataShelter'>מידע נוסף</button></td><td><input type='$typeCheckbox' name='$nameCheckboxShelter' value='$rowShelter[$name]' class='$btnCheck'></td></tr>";
     }
+
 }
      next($percentShelterCombine);
 
@@ -520,6 +686,9 @@ echo"</div>";
 echo"</div>";
 
 echo "<input type='$type' class='$btnClass' value='$btnValueCheck' id='$btnIdCheck' >";
+echo "</div>";
+
+
 ?>
 
  <div id="dataModal" class="modal fade">  
@@ -583,7 +752,8 @@ $(document).ready(function(){
                 data:{ placeNameSupport : placeNameSupport },  
                 success:function(data){  
                      $('#moreDetails').html(data);
-                     $('.modal-title').html("בחירתך הועברה בהצלחה!");
+                   // $('.modal-title').html("בחירתך הועברה בהצלחה!");
+                      $('.modal-title').html("פרטי הגוף המטפל");
                      $('#dataModal').modal({
                     backdrop: 'static',
                     keyboard: true,
@@ -616,7 +786,8 @@ $(document).ready(function(){
                 comments : messgeUser
                 },  
                 success:function(data){  
-                     $('#moreDetails').html(data);  
+                     $('#moreDetails').html(data); 
+                     $('.modal-title').html("בחירתך הועברה בהצלחה!");
                      $('#dataModal').modal({
                     backdrop: 'static',
                     keyboard: true,
@@ -637,7 +808,8 @@ $(document).ready(function(){
                 method:"post",  
                 data:{ placeNameShelter : placeNameShelter },  
                 success:function(data){  
-                     $('#moreDetails').html(data);  
+                     $('#moreDetails').html(data); 
+                      $('.modal-title').html("פרטי הגוף המטפל");
                      $('#dataModal').modal({
                     backdrop: 'static',
                     keyboard: true,
@@ -693,6 +865,55 @@ $(document).ready(function(){
                 </div>
             </div>	
         </footer>
+        
+        <script>
+                $(document).ready(function () {
+          var trigger = $('.hamburger'),
+              overlay = $('.overlay'),
+             isClosed = false;
+        
+            trigger.click(function () {
+              hamburger_cross();      
+            });
+        
+            function hamburger_cross() {
+        
+              if (isClosed == true) {          
+                overlay.hide();
+                trigger.removeClass('is-open');
+                trigger.addClass('is-closed');
+                isClosed = false;
+              } else {   
+                overlay.show();
+                trigger.removeClass('is-closed');
+                trigger.addClass('is-open');
+                isClosed = true;
+              }
+          }
+          
+          $('[data-toggle="offcanvas"]').click(function () {
+                $('#wrapper').toggleClass('toggled');
+          });  
+        });
+                
+        </script>
+        
+        <script>
+        // שפת התוסף, עברית - ברירת מחדל: he, אנגלית: en
+        nl_lang = "he";
+        // מיקום התוסף, שמאל למעלה - ברירת מחדל: tl, שמאל למטה: bl, ימין למעלה: tr, ימין למטה: br
+        nl_pos = "bl";
+        // הצהרת הנגישות עבור התוסף, כתובת ישירה אל הצהרת הנגישות של האתר שלך
+        nl_link = "0";
+        // צבע התוסף המתאים ביותר לאתרך מתוך 10 צבעים לבחור מתוכם כרגע
+        nl_color = "gray ";
+        // האם התוסף יוצג כסרגל או כלחצן
+        nl_compact = "1";
+        // האם לפתוח תפריט אחד בכל פעם
+        nl_accordion = "0";
+        </script>
+        <script type="text/javascript" charset="utf-8" src="http://gabriellasi.mtacloud.co.il/accessibility/nagishli.js" defer>
+        </script>
 </body>
 </html>
 <?php
