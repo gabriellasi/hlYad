@@ -120,14 +120,34 @@ else{
 
 echo $data['message'];
 
+
+
+//$email_message = "פרטי הטופס:\n\n";
+function clean_string($string) {
+  $bad = array("content-type","bcc:","to:","cc:","href");
+  return str_replace($bad,"",$string);
+}
+
+$email_to="hoshetly@gmail.com";
+$email_subject="נוצרה טבלה חדשה";
+$email_message .= "שם הטבלה שנוצרה: ".clean_string($tableName)."\n";
+ 
+// create email headers
+$headers = 'From: '.$email_to."\r\n".
+'Reply-To: '.$email_from."\r\n" .
+'X-Mailer: PHP/' . phpversion();
+@mail($email_to, $email_subject, $email_message, $headers); 
+
+
 $conn->close();
 
-    $email_to = "hoshetly@gmail.com";
+/*    $email_to = "hoshetly@gmail.com";
     $email_subject = "טבלה חדשה נפתחה";
     $email_message = "פרטי הטבלה";
 
 
 
-mail( $email_to, $email_subject, $email_message); 
- 
+mail('hoshetly@gmail.com', '$email_subject', $email_message);*/
+
+
 ?>
