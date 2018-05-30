@@ -26,12 +26,12 @@ $city=$_POST["cityName"];
 $street=$_POST["street"];
 $address= $street . ' ' . $city;
 
-$checkExistVal="SELECT ID FROM volunteer where name='$firstName' and address='$address' and risk='$riskType'";
+$checkExistVal="SELECT ID FROM volunteer where first_name='$firstName' and address='$address' and risk='$riskType'";
 $result = $conn->query($checkExistVal);
 
 
 if($result->num_rows==0){  
-$InsertVolunteer="INSERT INTO volunteer (fisrt_name,last_name,treatment_area,phone,address,mail) VALUES('".$firstName."','".$lastName."','".$riskType."','".$phone."','".$address."','".$email."');";
+$InsertVolunteer="INSERT INTO volunteer (first_name,last_name,address,risk,phone,mail) VALUES('".$firstName."','".$lastName."','".$address."','".$riskType."','".$phone."','".$email."');";
 $conn->query($InsertVolunteer);
 }
 else{
@@ -44,7 +44,7 @@ if(!empty($errors)){
 }
 else{
     $data['success']=true;
-    $data['message']='בית המחסה הוסף למערכת בהצלחה';
+    $data['message']='מתנדב הוסף למערכת בהצלחה';
 }
 
 echo $data['message'];
