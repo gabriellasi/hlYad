@@ -1,3 +1,34 @@
+<?php
+session_start();
+
+if(isset($_SESSION["user_token"])){
+
+    //admin
+    if($_SESSION["permit"]===1){}
+
+    //youth
+    if($_SESSION["permit"]===2){}
+    //shelter
+    if($_SESSION["permit"]===3){
+        echo '<style type="text/css">
+            #shelter{display:none;}
+        </style>';
+    }
+    //support group
+    if($_SESSION["permit"]===4){
+                echo '<style type="text/css">
+            #shelter{display:none;}
+        </style>';
+    }
+    //volunteer
+    if($_SESSION["permit"]===5){}
+    //carer
+    if($_SESSION["permit"]===6){}
+
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
   <head>
@@ -26,7 +57,7 @@
     <body>
         <div class="header">
             <div id="log">        
-            <i id="logIn"  class="fa" title="התחבר" >&#xf007;</i>
+            <i id="logIn" class="fa" title="התחבר" >&#xf007;</i>
             </div>
             
             <div class="text-center"> 
@@ -46,6 +77,16 @@
                     </nav>
                 </div>
             </div>
+            <div class="pointer" id="shelter" style="display:none;">
+                <div calss="navbar">
+                    <nav class="stroke">
+                        <ul>
+                          <li><a href="#">הוסף בית מחסה</a></li>
+                          <li><a href="#">הוסף קבוצת תמיכה</a></li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
         </div>
         
         <a href="#" onclick="signOut();" style="font-family: gisha;font-size: 20px;font-weight: bold;display: block;text-align: center;">התנתק</a>
@@ -54,8 +95,15 @@
                 var auth2 = gapi.auth2.getAuthInstance();   auth2.signOut().then(function () {
                     console.log('User signed out.');
                 });
+                location.reload(true);
             }
+            <?php
+                session_destroy();
+                session_unset();
+            ?>
+
         </script>
+
         
         <main>
             <div class="page-header" style="border-bottom: 1px solid #E8AFBF;">
@@ -71,10 +119,10 @@
                         [כגון: גיל, איזור מגורים, טלפון]<br>
                         <span style="color:red;font-weight: bold;">*שלב זה אינו חובה בשלב הכניסה למערכת  </span>
                         </p>
-                        <form id="registrationForm" action="#" method="post" onsubmit="">
+                        <form id="registrationForm" action="deeper_registration.php" method="post" onsubmit="getCity()">
                             <div class="form-group">
                                 <label for="phoneNum">מספר טלפון</label>
-                                <input class="form-control" type="tel" name="phoneNum" placeholder="מספר טלפון" pattern="(?=.*[0-9]).{9,10}">
+                                <input class="form-control" type="tel" name="phoneNum" placeholder="מספר טלפון" pattern="(?=.*[0-9]).{9,10}" required>
                             </div>
                             <div class="form-group">
                                 <label for="city">שם ישוב:</label>
@@ -83,9 +131,22 @@
                             <div class="form-group">
                                 <label for="age">גיל:
                                 </label>
-                                <input class="form-control" type="text" placeholder="גיל" value="">
+                                <input class="form-control" type="text" name="age" placeholder="גיל" value="" required>
+                                <input type="text" id="cityChange" name="cityName" value="" style="display: none;">
+                                <input type="text" id="token" name="token" value="" style="display: none;">
                             </div>
-                            <input type="submit" class="btn btn-info btn-lg" value="הצטרף" onsubmit="loadModal()">
+                            <div class="form-group">
+                                <label for="gender">זהות מינית: 
+                                </label>
+                                <select name="gender" required>
+                                    <option disabled selected>בחר מתוך הרשימה</option>
+                                    <option>נקבה</option>
+                                    <option>זכר</option>
+                                    <option>אחר</option>
+                                </select>
+                                
+                            </div>
+                            <input type="submit" class="btn btn-info btn-lg" value="הצטרף" onsubmit="">
                         </form>
 
                     </div>
@@ -132,29 +193,45 @@
                                 console.log("ID Token: " + id_token);
                                     
                                     
-                                    var user_permit = Document.getElementById('permission');
+                                    /*var user_permit = Document.getElementById('permission');
                                     var chosen_permit = user_permit.options[user_permit.selectedIndex].value;
+                                    */
+                                updateToken(id_token, full_name, family_name, first_name, email_add, email_ID);
                                     
+                                    var token = document.getElementById("token");
+                                    token.setAttribute("value",id_token);
                                     
-                                updateToken(id_token, full_name, family_name, first_name, email_add, email_ID,chosen_permit);
-                                        
                                     };
                                 
-                                function updateToken(tokenid, fullName, familyName, firstName, emailAdd, emailId, permission){
+                                function updateToken(tokenid, fullName, familyName, firstName, emailAdd, emailId){
                                     $.post("authenticate.php",
-                                            { id_token: tokenid , full_name: fullName, family_name: familyName, first_name: firstName, email_add: emailAdd, email_id: emailId,
-                                            permit: permission},
+                                            { id_token: tokenid , full_name: fullName, family_name: familyName, first_name: firstName, email_add: emailAdd, email_id: emailId},
                                             function(){
                                             alert("Successfuly added token");
+                                            });
+                                    /*updatePermission(tokenid);*/
+                                    var user_permit = document.getElementById('permission');
+                                    var chosen_permit = user_permit.options[user_permit.selectedIndex].value;
+                                    $.post("update_permission.php",
+                                            { id_token: tokenid , permit: chosen_permit
+                                            },
+                                            function(){
+                                            alert("updated permission");
                                             });
                                         }
-                                /*function updateToken(tokenid){
-                                    $.post("authenticate.php",
-                                            { id_token: tokenid   },
+                                
+                                /*function updatePermission(tokenid){
+                                    var user_permit = document.getElementById('permission');
+                                    var chosen_permit = user_permit.options[user_permit.selectedIndex].value;
+                                    
+                                    $.post("update_permission.php",
+                                            { id_token: tokenid , permit: chosen_permit
+                                            },
                                             function(){
-                                            alert("Successfuly added token");
+                                            alert("updated permission");
                                             });
-                                        }*/                                
+                                }*/
+                              
                             </script>
                         </form>
                     </div>
@@ -226,5 +303,25 @@
             document.getElementById("city").innerHTML=txt;
         };
         </script>
+        
+        <script>
+            function getCity(){
+            var obj = document.getElementsByTagName('select');
+            console.log(obj);
+            console.log(obj[0]);
+            var select = obj[0];
+            //this should have an event handler for a click on submit!!!! 
+            var cityName = select.options[select.selectedIndex].text;
+            document.getElementById("cityChange").setAttribute("value",cityName);
+            };
+   
+        </script>
+        <?php
+        /*$_SESSION["user"] = $_POST['token'];
+        $_SESSION["permit"] = $_POST['permit'];*/
+        echo $_SESSION["permit"];
+        echo $_SESSION["user"];
+        ?>
+        
     </body>
 </html>

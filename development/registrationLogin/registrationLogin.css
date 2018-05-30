@@ -15,10 +15,12 @@
 
 .col-sm-6 p{
     text-align: center;
+    font-size: 14px;
 }
 
 form{
     font-family: gisha;
+    font-size:17px;
 }
 
 input[type=tel]{
@@ -27,7 +29,7 @@ input[type=tel]{
     background-position: 100%; 
     background-repeat: no-repeat;*/
     padding-right: 15px;
-    font-size: 17px;
+    font-size: 14px;
 }
 input[type=text]{
     /*background-image: url('calendar.png');
@@ -35,7 +37,7 @@ input[type=text]{
     background-position: 100%; 
     background-repeat: no-repeat;*/
     padding-right: 15px;
-    font-size: 17px !important;
+    font-size: 14px !important;
 }
 
 input {
@@ -47,7 +49,7 @@ select{
     width:100%;
     height:34px;
     padding:6px 12px;
-    font-size:17px !important;
+    font-size:14px !important;
     line-height: 3.428571;
     color:#555;
     border:1px solid #ccc;
@@ -87,4 +89,17 @@ input[type=submit]:hover{
 
 .abcRioButton{
     margin:auto;
+}
+#pageTitle {
+    color:#822040;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size:38px;
+    margin-bottom: 30px;
+    margin-top: -20px;
+    padding-top:60px;
+}
+
+#logo{
+    margin-left: 110px;
 }
