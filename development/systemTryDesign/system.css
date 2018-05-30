@@ -1,0 +1,131 @@
+
+
+small {
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.4);
+}
+
+
+.center {
+  text-align: center;
+}
+
+section {
+  height: 100vh;
+}
+
+#log{
+    display: inline;
+}
+
+.img-fluid{
+    margin: 0 auto;
+}
+
+hr{
+    margin:0 !important;
+}
+
+#pageTitle{
+    color:#822040;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size:38px;
+    margin-bottom: 30px;
+    margin-top: -20px;
+    padding-top:60px;
+}
+.required{
+    color:red;
+    display:inline-block;
+}
+#btn{
+border-radius:10px;
+color:#822040;
+background-color: #cccccc;
+cursor: pointer;
+font-weight:bolder;
+margin-bottom: 10%;
+font-family: 'Amatic SC', cursive;
+font-size:20px;
+width:6%;
+}
+
+.btn:hover{
+    transform: scale(1.1);
+}
+
+.form-control{
+    border-color:darkgrey;
+}
+.form-control:focus{
+    border-color:#822040;
+}
+input {
+  caret-color:#822040 ;
+}
+
+
+.form{
+    font-family: gisha;
+    font-size:17px;
+    max-width:500px;
+    margin-top:30px;
+}
+.form-group, .check{
+max-width: 500px;
+
+}
+.option{
+    font-weight: lighter;
+}
+select{
+display:block !important;
+width:100%;
+height:34px;
+padding:6px 12px;
+font-size:14px !important;
+line-height: 3.428571;
+color:#555;
+border:1px solid #ccc;
+font-family:inherit;
+margin: 0;
+border-radius: 4px;
+box-shadow:insert 0 1px 1px rgba(0,0,0,.075);
+transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+font:inherit;
+caret-color: rgb(130,32,64);
+box-sizing: border-box;
+cursor:pointer;
+}
+
+#cityChange{
+    display:none;
+}
+input[type=text], input[type=email]{
+    font-size:14px;
+}
+input[type=submit]{
+    font-size:20px;
+    font-weight: bold;
+    max-width: 150px;
+    background-color:#822040;
+    border-color:#822040;
+    margin:0;
+}
+input[type=submit]:hover{
+     border-color:#822040;
+    background-color:#822040;
+    color:white;
+}
+.btn-info:hover, .btn-info:active, .btn-info:focus {
+  box-shadow: none !important;
+   background-color:#822040 !important;
+   border-color:#822040;
+}
+.btn-default{
+    background-color: white;
+    margin-right:20px;
+    font-weight:bold;
+}
+
