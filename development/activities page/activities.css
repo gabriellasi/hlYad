@@ -1,0 +1,39 @@
+
+body {
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+}
+body,
+html {
+  height: 100%;
+}
+.nav .open > a,
+.nav .open > a:hover,
+.nav .open > a:focus {
+  background-color: transparent;
+}
+
+
+main{
+    font-family: gisha;
+    font-size:17px;
+}
+h3{
+    font-size: 20px !important;
+}
+#activityTitle{
+    color:#822040;
+    font-family: 'Amatic SC', cursive;
+    font-weight: bold;
+    font-size:38px;
+    margin-bottom: 30px;
+    margin-top: -20px;
+    padding-top:60px;
+}
+#systemLink{
+   color:#822040; 
+}
+#systemLink:hover{
+   color:#822040; 
+}
